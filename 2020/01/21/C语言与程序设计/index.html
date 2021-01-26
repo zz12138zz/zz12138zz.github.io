@@ -32,18 +32,18 @@
 <meta property="og:site_name" content="某纯路人的博客">
 <meta property="og:description" content="华中科技大学计算机学院19级C语言课程设计笔记，内容大部分来源于教科书和ppt。作者菜的一批，若有任何纰漏或错误可以发邮件至954988021@qq.com指出有误的地方并喷我一顿，十分感谢（不过估计也没人看）">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/aimerfans/PicGoimg/raw/master/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.png">
-<meta property="og:image" content="https://gitee.com/aimerfans/PicGoimg/raw/master/img/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png">
-<meta property="og:image" content="https://gitee.com/aimerfans/PicGoimg/raw/master/img/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B61.png">
-<meta property="og:image" content="https://gitee.com/aimerfans/PicGoimg/raw/master/img/C%E7%A8%8B%E5%BA%8F.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B61.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/C%E7%A8%8B%E5%BA%8F.png">
 <meta property="article:published_time" content="2020-01-21T02:56:32.000Z">
-<meta property="article:modified_time" content="2021-01-26T06:40:14.066Z">
+<meta property="article:modified_time" content="2021-01-26T13:58:41.294Z">
 <meta property="article:author" content="zz12138zz">
 <meta property="article:tag" content="编程语言学习">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/aimerfans/PicGoimg/raw/master/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.png">
+<meta name="twitter:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.png">
 
 
 <link rel="canonical" href="http://example.com/2020/01/21/C%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
@@ -274,7 +274,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-26 14:40:14" itemprop="dateModified" datetime="2021-01-26T14:40:14+08:00">2021-01-26</time>
+        <time title="修改时间：2021-01-26 21:58:41" itemprop="dateModified" datetime="2021-01-26T21:58:41+08:00">2021-01-26</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -333,7 +333,7 @@ K[FORTRAN] -->J</pre>
 <p>输入你的名字（比如<code>Mike</code>）后屏幕出现</p>
 <p><code>Hello Mike</code></p>
 <h2 id="计算机系统及内存编址"><a href="#计算机系统及内存编址" class="headerlink" title="计算机系统及内存编址"></a>计算机系统及内存编址</h2><p>计算机系统的思维导图表示</p>
-<p><img src="https://gitee.com/aimerfans/PicGoimg/raw/master/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.png" alt="计算机系统"></p>
+<p><img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.png" alt="计算机系统"></p>
 <p>其中需要注意的是内存，内存以字节为单位==连续线性编址==即按照0x0000，0x0001，0x0002……从低地址到高地址连续线性编号。</p>
 <p>计算机中的常用储存单位：一个二进制位为1比特（1b），8b为一个字节（1B），1024B为1K，1024K为1M，1024M为1G，1024G为1T。</p>
 <p>cpu的数据总线的宽度称为cpu的机器字长</p>
@@ -469,7 +469,7 @@ G-->H[long double]</pre>
 <p><code>scanf</code>函数的调用形式与<code>printf</code>类似，<code>format</code>中的转换说明的个数决定了后面参数的个数，后面的参数都是地址值，读入的数据按转换说明中的格式转化后储存在后面的地址中，函数正确执行时返回值为被转换的数据的个数，遇到文件尾或出错时会返回EOF</p>
 <p>一般情况下函数的调用方式如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">double</span> f;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">50</span>]</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d%f%s&quot;</span>,&amp;a,&amp;f,s);</span><br></pre></td></tr></table></figure>
-<p>&amp;为取地址符，用来得到变量a和f的地址，s本身就是地址，在数组一章会提到。</p>
+<p><code>&amp;</code>为取地址符，用来得到变量<code>a</code>和<code>f</code>的地址，<code>s</code>本身就是地址，在数组一章会提到。</p>
 <p>一般情况下<code>scanf</code>的格式字符串中只有转换说明，若有除转换说明以外的除空格和制表符以外的其他字符，则在输入时必须输入一样的字符才能正确执行，比如</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;these are %d,%d&quot;</span>,&amp;a,&amp;b);</span><br></pre></td></tr></table></figure>
 <p>此时必须在输入的两个整数之前加上these are ，整数之间加逗号才行。</p>
@@ -505,10 +505,10 @@ G-->H[long double]</pre>
 <td>跳过输入域</td>
 </tr>
 </tbody></table>
-<p>*的用法如下</p>
+<p><code>*</code>的用法如下</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n1,n2,n3,n4,n5;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %*d %d %*d %d %*d %d %*d %d&quot;</span>,&amp;n1,&amp;n2,&amp;n3,&amp;n4,&amp;n5);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d %d %d %d&quot;</span>,n1,n2,n3,n4,n5);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行程序时输入1，2，3，4，5，6，7，8，9</p>
-<p>输出1，3，5，7，9</p>
+<p>执行程序时输入<code>1 2 3 4 5 6 7 8 9</code></p>
+<p>输出<code>1 3 5 7 9</code></p>
 <h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>计算机程序是由有限条语句构成的序列，语句依次执行，对语句执行次序的控制称为流程控制。</p>
 <p>任何复杂的算法都可以通过顺序、分支、循环三种结构实现，对只包含这三种结构的程序称为结构化程序。</p>
 <p>C语言是很好的结构化程序设计语言，同时也支持部分转移语句。</p>
@@ -531,7 +531,7 @@ G-->H[long double]</pre>
 <li><code>if(条件) 语句1</code></li>
 <li><code>if(条件) 语句1  else 语句2</code></li>
 </ol>
-<p><img src="https://gitee.com/aimerfans/PicGoimg/raw/master/img/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" alt="if语句"></p>
+<p><img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" alt="if语句"></p>
 <p>表达式中的值不为0时执行if后面的语句</p>
 <p>if语句可以嵌套使用如</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a&gt;b)&#123;</span><br><span class="line">    <span class="keyword">if</span>(a&gt;c)</span><br><span class="line">        max=a;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        max=c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b&gt;c)</span><br><span class="line">        max=b;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        max=c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -568,7 +568,7 @@ G-->H[long double]</pre>
 <li><p>三个表达式可以部分或全部省略，但是两个分号不能少，其中表达式2省略时表示无限循环（当然你可以在循环体内部设置跳出循环的转移语句</p>
 </li>
 </ol>
-<p><img src="https://gitee.com/aimerfans/PicGoimg/raw/master/img/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B61.png" alt="for语句"></p>
+<p><img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B61.png" alt="for语句"></p>
 <h4 id="do-while语句"><a href="#do-while语句" class="headerlink" title="do-while语句"></a>do-while语句</h4><p><code>do-while</code>语句的形式为</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">    语句;</span><br><span class="line"><span class="keyword">while</span>(表达式)</span><br></pre></td></tr></table></figure>
 <p>其与<code>whlie</code>语句差不多，但是会在一开始先执行一次循环体里的内容，类似下面的结构</p>
@@ -602,7 +602,7 @@ G-->H[long double]</pre>
 <h2 id="函数与程序结构"><a href="#函数与程序结构" class="headerlink" title="函数与程序结构"></a>函数与程序结构</h2><h3 id="C语言的一般结构"><a href="#C语言的一般结构" class="headerlink" title="C语言的一般结构"></a>C语言的一般结构</h3><p>在开发和维护大型程序时最好的办法时使用易于管理的结构化编程的方法，自顶而下，逐步求精</p>
 <p>结构化程序设计方法是以模块化设计为中心，将待开发的软件和系统划分为若干独立的模块进行开发，最后将模块组装到一起。实现结构化程序设计的手段具体到C语言是编写自己的函数，把每一个模块设计成一个函数。</p>
 <p>一个C程序由一个或多个函数组成，其中有且只有一个<code>main</code>函数，程序的执行总是从<code>main</code>函数开始，程序执行到一个后面跟有括号的函数名时就调用函数，将程序执行转移到函数。除main函数外的函数分为两类，一类是库函数，如<code>printf</code>，<code>scanf</code>等，包含在相应头文件中，只需包含对应头文件即可使用；第二类是用户自定义函数，需要先给出定义或先声明函数原型再使用。</p>
-<p>组成一个C源文件的程序的各个函数可以编    辑成多个C源文件，各C源文件收中要用到的一些变量与常量的声明以及预处理指令可以编辑成一个后缀为.h的头文件，在每个C文件中包含头文件，则每一个C文件都可以使用该头文件里声明的一些标识符。<img src="https://gitee.com/aimerfans/PicGoimg/raw/master/img/C%E7%A8%8B%E5%BA%8F.png" alt="C程序"></p>
+<p>组成一个C源文件的程序的各个函数可以编    辑成多个C源文件，各C源文件收中要用到的一些变量与常量的声明以及预处理指令可以编辑成一个后缀为.h的头文件，在每个C文件中包含头文件，则每一个C文件都可以使用该头文件里声明的一些标识符。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/C%E7%A8%8B%E5%BA%8F.png" alt="C程序"></p>
 <h3 id="函数的定义与函数原型"><a href="#函数的定义与函数原型" class="headerlink" title="函数的定义与函数原型"></a>函数的定义与函数原型</h3><p>函数的定义一般形式为</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">类型名 函数名(参数列表)</span><br><span class="line">&#123;</span><br><span class="line">    声明部分</span><br><span class="line">    语句部分</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>花括号前的部分称为函数头，花括号里的称为函数体</p>
