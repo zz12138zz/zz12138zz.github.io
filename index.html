@@ -1,379 +1,406 @@
 <!DOCTYPE html>
-<html>
-<meta  lang="zh-CN" >
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#fff" id="theme-color">
-  <link rel="icon" href="https://gitee.com/aimerfans/PicGoimg/raw/master/img/煎鸡蛋.png">
-  <title>某纯路人的博客</title>
-  <script>
-    // control reverse button
-    var reverseDarkList = {
-      dark: 'light',
-      light: 'dark'
-    };
-    var themeColor = {
-      dark: '#1c1c1e',
-      light: '#fff'
-    }
-    // get the data of css prefers-color-scheme
-    var getCssMediaQuery = function() {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
-    // reverse current darkmode setting function
-    var reverseDarkModeSetting = function() {
-      var setting = localStorage.getItem('user-color-scheme');
-      if(reverseDarkList[setting]) {
-        setting = reverseDarkList[setting];
-      } else if(setting === null) {
-        setting = reverseDarkList[getCssMediaQuery()];
-      } else {
-        return;
-      }
-      localStorage.setItem('user-color-scheme', setting);
-      return setting;
-    };
-    // apply current darkmode setting
-    var setDarkmode = function(mode) {
-      var setting = mode || localStorage.getItem('user-color-scheme');
-      if(setting === getCssMediaQuery()) {
-        document.documentElement.removeAttribute('data-user-color-scheme');
-        localStorage.removeItem('user-color-scheme');
-        document.getElementById('theme-color').content = themeColor[setting];
-      } else if(reverseDarkList[setting]) {
-        document.documentElement.setAttribute('data-user-color-scheme', setting);
-        document.getElementById('theme-color').content = themeColor[setting];
-      } else {
-        document.documentElement.removeAttribute('data-user-color-scheme');
-        localStorage.removeItem('user-color-scheme');
-        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
-      }
-    };
-    setDarkmode();
-  </script>
-  <script>
-    function loadScript(url, cb) {
-      var script = document.createElement('script');
-      script.src = url;
-      if (cb) script.onload = cb;
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  </script>
-  
-  <link rel="preload" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css" as="style" >
-  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
-  
-  <link rel="preload" href="//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js" as="script">
-  
-  
-  <link rel="preload" href="/js/lib/lozad.min.js" as="script">
-  
-  
-  
-  
-  
-  
-  
-  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
 <link rel="stylesheet" href="/css/main.css">
 
-  
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css">
-
-  
-  
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
-
-  
-  
-  
-<meta name="generator" content="Hexo 5.3.0"></head>
 
 
-<body>
-  <div class="wrapper">
-    
-    <nav class="navbar">
-  <div class="navbar-logo">
-    <span class="navbar-logo-main">
-      
-      <img class="navbar-logo-img" src="https://gitee.com/aimerfans/PicGoimg/raw/master/img/煎鸡蛋.png">
-      
-      <span class="navbar-logo-dsc">某纯路人的博客</span>
-    </span>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta property="og:type" content="website">
+<meta property="og:title" content="某纯路人的博客">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="某纯路人的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="zz12138zz">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>某纯路人的博客</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
   </div>
-  <div class="navbar-menu">
-    
-    <a href="/" class="navbar-menu-item">首页 </a>
-    
-    <a href="/archives" class="navbar-menu-item">归档 </a>
-    
-    <a href="/tags" class="navbar-menu-item">标签 </a>
-    
-    <a href="/categories" class="navbar-menu-item">分类 </a>
-    
-    <a href="/about" class="navbar-menu-item">关于 </a>
-    
-    <a href="/links" class="navbar-menu-item">友链 </a>
-    
-    <a class="navbar-menu-item darknavbar" id="dark"><i class="iconfont icon-weather"></i></a>
-  </div>
-</nav>
-    
-    <div class="section-wrap">
-      <div class="container">
-        <div class="columns">
-          <main class="main-column">
-<div class="card">
-  
-  <article class="card card-content">
-    <a href="/2021/01/26/hello-world/">
-      <h1 class="post-title">
-        Hello World
-      </h1>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">某纯路人的博客</h1>
+      <i class="logo-line"></i>
     </a>
-    <div class="card-excerpt">
-      
-      Welcome to Hexo! This is your very first post. Check 
-      
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
-    <div class="card-post-footer">
-      <div class="post-meta">
-        <time datetime="2021-01-26T02:17:46.845Z" style="display: flex; align-items: center;">
-          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
-          <span>2021-01-26</span>
-        </time>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
         
-        
-        <span class="dot"></span>
-        <span>75 字</span>
-        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zz12138zz"
+      src="https://gitee.com/aimerfans/PicGoimg/raw/master/img/konata.png">
+  <p class="site-author-name" itemprop="name">zz12138zz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
       </div>
-      <a href="/2021/01/26/hello-world/">继续阅读 </a>
-    </div>
-  </article>
-</div>
-
-</main>
-          <aside class="left-column">
-            
-            <div class="card card-author">
-              
-<img src="https://gitee.com/aimerfans/PicGoimg/raw/master/img/konata.png" class="author-img">
-
-<p class="author-name">zz12138zz</p>
-<p class="author-description">一般通过马猴烧酒</p>
-<div class="author-message">
-  <a class="author-posts-count" href="/archives">
-    <span>1</span>
-    <span>文章</span>
-  </a>
-  <a class="author-categories-count" href="/categories">
-    <span>0</span>
-    <span>分类</span>
-  </a>
-  <a class="author-tags-count" href="/tags">
-    <span>0</span>
-    <span>标签</span>
-  </a>
-</div>
-
-            </div>
-            
-            <div class="sticky-tablet">
-  
-  
-  
-  <article class="card card-content">
-    <div class="categories-card">
-  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>分类</div>
-  <div class="categories-list">
-    
-  </div>
-</div>
-  </article>
-  
-  <article class="card card-content">
-    <div class="tags-card">
-  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>热门标签</div>
-  <div class="tags-list">
-    
-  </div>
-</div>
-  </article>
-  
-  
-  <article class="card card-content widescreen-archive">
-    <div class="archive-card">
-  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-    
-      <a href="/archives/2021" class="archive-card-list-item">
-          2021
-          <span class="archive-card-list-item-badge">1</span>
-      </a>
-    
-  </div>
-</div>
-  </article>
-  
-</div>
-          </aside>
-          <aside class="right-column">
-            <div class="sticky-widescreen">
-  
-  
-  
-  <article class="card card-content">
-    <div class="recent-posts-card">
-  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>最近文章</div>
-  <div class="recent-posts-list">
-    
-      <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2021-01-26</div>
-        <a href="/2021/01/26/hello-world/"><div class="recent-posts-item-content">Hello World</div></a>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
-    
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zz12138zz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zz12138zz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:954988021@qq.com" title="E-Mail → mailto:954988021@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
   </div>
-</div>
-  </article>
-  
-  
-  <article class="card card-content">
-    <div class="archive-card">
-  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-    
-      <a href="/archives/2021" class="archive-card-list-item">
-          2021
-          <span class="archive-card-list-item-badge">1</span>
-      </a>
-    
-  </div>
-</div>
-  </article>
-  
-</div>
-          </aside>
+
+
+
         </div>
       </div>
     </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
   
-  <footer class="footer">
-  <div class="footer-container">
-    <div>
-      <div class="footer-dsc">
-        <span>Copyright ©
-          
-          2020 -
-          
-          2021
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/21/C%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://gitee.com/aimerfans/PicGoimg/raw/master/img/konata.png">
+      <meta itemprop="name" content="zz12138zz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="某纯路人的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/01/21/C%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">C语言程序设计</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-21 10:56:32" itemprop="dateCreated datePublished" datetime="2020-01-21T10:56:32+08:00">2020-01-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
         </span>
-        <a href="/" class="footer-link">某纯路人的博客 </a>
-      </div>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-26 13:41:51" itemprop="dateModified" datetime="2021-01-26T13:41:51+08:00">2021-01-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>华中科技大学计算机学院19级C语言课程设计笔记，内容大部分来源于教科书和ppt。作者菜的一批，若有任何纰漏或错误可以发邮件至954988021@qq.com指出有误的地方并喷我一顿，十分感谢（不过估计也没人看）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/21/C%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
     </div>
 
     
-    <div class="footer-dsc">
-      
-      
-      Powered by
-      <a href="https://hexo.io/" class="footer-link" target="_blank" rel="nofollow noopener noreferrer">&nbsp;Hexo </a>
-      
-      
-      <span>&nbsp;|&nbsp;</span>
-      
-      
-      
-      Theme -
-      <a href="https://github.com/theme-kaze" class="footer-link" target="_blank"
-        rel="nofollow noopener noreferrer">&nbsp;Kaze</a>
-      
-    </div>
     
     
-    
-    
-</footer>
-  <a role="button" id="scrollbutton" class="basebutton" >
-  <i class="iconfont icon-arrowleft button-icon"></i>
-</a>
-<a role="button" id="menubutton" class="basebutton">
-  <i class="iconfont icon-menu button-icon"></i>
-</a>
-<a role="button" id="popbutton" class="basebutton">
-  <i class="iconfont icon-expand button-icon"></i>
-</a>
-<a role="button" id="darkbutton" class="basebutton darkwidget">
-  <i class="iconfont icon-weather button-icon"></i>
-</a>
 
-  
-  
-  
-  <script>
-  var addImgLayout = function () {
-    var img = document.querySelectorAll('.post-content img');
-    var i;
-    for (i = 0; i < img.length; i++) {
-      var wrapper = document.createElement('a');
-      wrapper.setAttribute('data-fslightbox', 'gallery');
-      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
-      wrapper.setAttribute('style', 'width: 100%; display: flex; justify-content: center;');
-      img[i].parentElement.insertBefore(wrapper, img[i]);
-      wrapper.appendChild(img[i]);
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
     }
-    refreshFsLightbox();
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
-<script>loadScript("//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js", addImgLayout)</script>
-  
-  
-  
-<script src="/js/main.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zz12138zz</span>
+</div>
+
+    </div>
+  </footer>
 
   
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
   
+
+
+
+
+<script>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
   <script>
-    var addLazyload = function () {
-      var observer = lozad('.lozad', {
-        load: function (el) {
-          el.srcset = el.getAttribute('data-src');
-        },
-        loaded: function (el) {
-          el.classList.add('loaded');
-        }
-      });
-      observer.observe();
-    }
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
   </script>
-  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
-  
-  
-</body>
 
+  
+
+
+
+
+  
+
+
+</body>
 </html>
