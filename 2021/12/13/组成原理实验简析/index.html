@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="大萝卜，我真的好喜欢你啊，为了你，我要重修组原！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组成原理实验">
+<meta property="og:url" content="http://example.com/2021/12/13/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%E7%AE%80%E6%9E%90/index.html">
+<meta property="og:site_name" content="某纯路人的博客">
+<meta property="og:description" content="大萝卜，我真的好喜欢你啊，为了你，我要重修组原！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211193328302.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211194544665.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211195301200.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211195919556.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211202735488.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211203110902.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212100008575.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212100535376.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212100659409.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212103553704.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212103642432.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212104135851.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212103825505.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212104218476.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212104710449.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212105053385.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212105354045.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212105634222.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212110751966.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212110953381.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212111858014.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212112533941.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212112625429.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212113305903.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212123702070.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212125208075.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212125317596.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212125350757.png">
+<meta property="og:image" content="c:/Users/95498/AppData/Roaming/Typora/typora-user-images/image-20211212125601260.png">
+<meta property="article:published_time" content="2021-12-13T09:38:56.000Z">
+<meta property="article:modified_time" content="2021-12-13T12:42:41.963Z">
+<meta property="article:author" content="zz12138zz">
+<meta property="article:tag" content="计算机组成原理">
+<meta property="article:tag" content="课程笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211193328302.png">
+
+
+<link rel="canonical" href="http://example.com/2021/12/13/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%E7%AE%80%E6%9E%90/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>组成原理实验 | 某纯路人的博客</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">某纯路人的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.</span> <span class="nav-text">数据基本表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BD%E6%A0%87%E7%A0%81%E8%BD%AC%E5%8C%BA%E4%BD%8D%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">国标码转区位码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%89%E5%AD%97%E6%9C%BA%E5%86%85%E7%A0%81%E8%8E%B7%E5%8F%96"><span class="nav-number">1.2.</span> <span class="nav-text">汉字机内码获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E6%B5%B7%E6%98%8E%E7%BC%96%E7%A0%81%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.3.</span> <span class="nav-text">16位海明编码电路设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E6%B5%B7%E6%98%8E%E8%A7%A3%E7%A0%81%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.4.</span> <span class="nav-text">16位海明解码电路设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%BC%96%E7%A0%81%E6%B5%81%E6%B0%B4%E4%BC%A0%E8%BE%93%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.5.</span> <span class="nav-text">海明编码流水传输实验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">运算器设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E5%8F%AF%E6%8E%A7%E5%8A%A0%E5%87%8F%E6%B3%95%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.1.</span> <span class="nav-text">8位可控加减法电路设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cla182%E5%9B%9B%E4%BD%8D%E5%85%88%E8%A1%8C%E8%BF%9B%E4%BD%8D%E7%94%B5%E8%B7%AF"><span class="nav-number">2.2.</span> <span class="nav-text">CLA182四位先行进位电路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E5%BF%AB%E9%80%9F%E5%8A%A0%E6%B3%95%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">4位快速加法器设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E5%BF%AB%E9%80%9F%E5%8A%A0%E6%B3%95%E5%99%A8%E8%AE%BE%E8%AE%A1-1"><span class="nav-number">2.4.</span> <span class="nav-text">16位快速加法器设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E5%BF%AB%E9%80%9F%E5%8A%A0%E6%B3%95%E5%99%A8%E8%AE%BE%E8%AE%A1-2"><span class="nav-number">2.5.</span> <span class="nav-text">32位快速加法器设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E6%97%A0%E7%AC%A6%E5%8F%B7%E9%98%B5%E5%88%97%E4%B9%98%E6%B3%95%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.6.</span> <span class="nav-text">5位无符号阵列乘法器设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%98%E6%B3%95%E6%B5%81%E6%B0%B4%E7%BA%BF%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.7.</span> <span class="nav-text">乘法流水线设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81%E4%B8%80%E4%BD%8D%E4%B9%98%E6%B3%95"><span class="nav-number">2.8.</span> <span class="nav-text">补码一位乘法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mips%E8%BF%90%E7%AE%97%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.9.</span> <span class="nav-text">MIPS运算器设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">存储系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%89%E5%AD%97%E5%AD%97%E5%BA%93%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E6%89%A9%E5%B1%95%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.1.</span> <span class="nav-text">汉字字库存储芯片扩展实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mips%E5%AF%84%E5%AD%98%E5%99%A8%E6%96%87%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.2.</span> <span class="nav-text">MIPS寄存器文件设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mips-ram%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.3.</span> <span class="nav-text">MIPS RAM设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%BB%84%E7%9B%B8%E8%BF%9Ecache%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.4.</span> <span class="nav-text">4路组相连cache设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cpu%E8%AE%BE%E8%AE%A1%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.</span> <span class="nav-text">CPU设计实验</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zz12138zz"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">zz12138zz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zz12138zz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zz12138zz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:954988021@qq.com" title="E-Mail → mailto:954988021@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%E7%AE%80%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zz12138zz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="某纯路人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          组成原理实验
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-13 17:38:56 / 修改时间：20:42:41" itemprop="dateCreated datePublished" datetime="2021-12-13T17:38:56+08:00">2021-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">大萝卜，我真的好喜欢你啊，为了你，我要重修组原！</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="数据基本表示">数据基本表示</h1>
+<h2 id="国标码转区位码">国标码转区位码</h2>
+<p>课本上有<span class="math display">\[区位码+A0A0H=GB2312\]</span>，那么国标码转区位码减去A0A0即可，注意不能用减法器，应该加上A0A0的补码5F60，如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211193328302.png" alt="image-20211211193328302" /></p>
+<h2 id="汉字机内码获取">汉字机内码获取</h2>
+<p>主要就是获得给出那一段话的机内码。数字和字母全是全角，建议直接复制文本。转换C代码如下，转换出的code可以直接作为镜像读到logisim的ROM中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fpr,*fpw;</span><br><span class="line">    fpr=fopen(<span class="string">&quot;./words.txt&quot;</span>,<span class="string">&quot;r&quot;</span>);</span><br><span class="line">    fpw=fopen(<span class="string">&quot;./code.txt&quot;</span>,<span class="string">&quot;w+&quot;</span>);</span><br><span class="line">    <span class="keyword">char</span> t[<span class="number">200</span>];</span><br><span class="line">    fgets(t,<span class="number">200</span>,fpr);</span><br><span class="line">    <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">fprintf</span>(fpw,<span class="string">&quot;v2.0 raw\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; t[i]!=<span class="string">&#x27;\0&#x27;</span> ; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>((t[i]&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;t[i]&lt;=<span class="string">&#x27;9&#x27;</span>) ||(t[i]&gt;=<span class="string">&#x27;a&#x27;</span>&amp;&amp;t[i]&lt;=<span class="string">&#x27;z&#x27;</span>)||(t[i]&gt;=<span class="string">&#x27;A&#x27;</span>&amp;&amp;t[i]&lt;=<span class="string">&#x27;Z&#x27;</span>))&#123;</span><br><span class="line">            <span class="built_in">fprintf</span>(fpw,<span class="string">&quot;00%x &quot;</span>,(<span class="keyword">unsigned</span> <span class="keyword">char</span>)t[i]);<span class="comment">//写ASCII码，然而没用，我也懒得删了</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">fprintf</span>(fpw,<span class="string">&quot;%x&quot;</span>,(<span class="keyword">unsigned</span> <span class="keyword">char</span>)t[i]);<span class="comment">//写入汉字机内码</span></span><br><span class="line">        ++flag;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">2</span>)&#123;<span class="comment">//机内码两个字节表示一个汉字，所以每两个字节输出一个空格。</span></span><br><span class="line">            <span class="built_in">fprintf</span>(fpw,<span class="string">&quot; &quot;</span>);</span><br><span class="line">            flag=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(fpw);</span><br><span class="line">    fclose(fpr);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="位海明编码电路设计">16位海明编码电路设计</h2>
+<p>就是分组的奇偶校验，连线的时候还是建议多用隧道吧，我这个属于是连到后面积重难返，别忘了总校验位<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211194544665.png" alt="image-20211211194544665" /></p>
+<p>海明校验的分组如下，第二列是标了1的就在P1组，第三列标了1的就在P2组，以此类推</p>
+<h2 id="位海明解码电路设计">16位海明解码电路设计</h2>
+<p>按照规则生成几个校验组的纠错位和总的偶校验位，总校验位为1必有一位错，总校验位为0但是其余校验位有1则有两位错，全0则没有错，这里建议画一个真值表体会一下。纠错就用一个解码器，生成的信号去和原数据异或。图如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211195301200.png" /></p>
+<h2 id="海明编码流水传输实验">海明编码流水传输实验</h2>
+<p>主要要知道出错之后重传四位，也就是,平时传输数据的时候，地址加1，出错时加上4的补码，并将之前寄存器中的值清零同时，锁住最后一个寄存器下方的使能，防止错误数据传过去。同时为了防止使能信号和数据有效信号的冲突，在使能信号上加上数据无效时同样锁住寄存器。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211195919556.png" alt="image-20211211195919556" /></p>
+<h1 id="运算器设计">运算器设计</h1>
+<h2 id="位可控加减法电路设计">8位可控加减法电路设计</h2>
+<p>照着书上的连就完了，串行进位，Y的每一位加个取反（这里是利用异或1取反），溢出就用数据位进位和符号位进位异或判断就好了。分析时延时，假设所有门电路延迟一样（当然教材上不是这样的，教材上异或门为3T，但是我叛逆期非要当1T做。后面也是假设所有门电路延时相同），那么第一个进位生成的时间是4T（异或门1T，全加器内3T），之后每2T产生一个进位，进位快于结果，所以关键路径延时2*7+4=18.</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211202735488.png" alt="image-20211211202735488" /><figcaption aria-hidden="true">image-20211211202735488</figcaption>
+</figure>
+<h2 id="cla182四位先行进位电路">CLA182四位先行进位电路</h2>
+<p>主要是根据P和G生成C，主要记住<span class="math inline">\(C_{i}=G_{i-1}+P_{i-1}C_{i-1}\)</span>，然后套娃带进去计算就行了。不过这里C<sub>0</sub>是C<sub>in</sub>，P和G的下标相应加1。</p>
+<p>成组进位生成函数G*就是最高位进位不要最多项的那一位。所有时延都是2T</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211211203110902.png" alt="image-20211211203110902" /><figcaption aria-hidden="true">image-20211211203110902</figcaption>
+</figure>
+<h2 id="位快速加法器设计">4位快速加法器设计</h2>
+<p>用$P_i=X_i Y_i <span class="math inline">\(，则有\)</span>S_i = P_i C_i$，CLA74182所有输出时延是2T，每一位的时延就很好分析了，最高进位延时3T，输出延时4T</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212100008575.png" alt="image-20211212100008575" /><figcaption aria-hidden="true">image-20211212100008575</figcaption>
+</figure>
+<h2 id="位快速加法器设计-1">16位快速加法器设计</h2>
+<p>由于4位加法器留了成组进位的输出，所以照着连到CLA74182就行了，和就不用通过74182生成了。同样书上有图。时延的分析稍微复杂一点，每一位进位生成的时延是5T（P*G*的3T加上74182的2T），此时所有加法器中的PG信号都已生成，在CLA74182中结果2T可以输出最高位和此高位进位，所以延时为7T，S时延要加上一个异或门，为8T。不过需要注意的是CLA74182输出的进位比下面加法器输出的进位快，所以如果从上面74182输出C15和C16，时延为5T（和所有进位一样，下面的最高位进位要等上一组进位进来经过一个2T的74182）</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212100535376.png" alt="image-20211212100535376" /><figcaption aria-hidden="true">image-20211212100535376</figcaption>
+</figure>
+<h2 id="位快速加法器设计-2">32位快速加法器设计</h2>
+<p>只让用四位加法器，其实就相当于两个16位快速加法器串联，或者也可以用74182生成一个进位，但是显然大萝卜不想让你这么干，一个是一开始只给了两个74182，二个位置也不大够。至于时延的分析，主要在进位的传递，传递除的进位时延为5T，也就是5T之后第二个十六位加法器开始收到进位。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212100659409.png" alt="image-20211212100659409" /><figcaption aria-hidden="true">image-20211212100659409</figcaption>
+</figure>
+<p>强行并行的话电路长这样，亲测能过</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212103553704.png" alt="image-20211212103553704" /><figcaption aria-hidden="true">image-20211212103553704</figcaption>
+</figure>
+<h2 id="位无符号阵列乘法器设计">5位无符号阵列乘法器设计</h2>
+<p>照着连就完了。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212103642432.png" alt="image-20211212103642432" /><figcaption aria-hidden="true">image-20211212103642432</figcaption>
+</figure>
+<h2 id="乘法流水线设计">乘法流水线设计</h2>
+<p>本质上还是阵列乘法，算式如下</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212104135851.png" alt="image-20211212104135851" /><figcaption aria-hidden="true">image-20211212104135851</figcaption>
+</figure>
+<p>电路如下：</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212103825505.png" alt="image-20211212103825505" /><figcaption aria-hidden="true">image-20211212103825505</figcaption>
+</figure>
+<h2 id="补码一位乘法">补码一位乘法</h2>
+<p>逻辑很简单，主要是控制计数的次数，在开始计数时载入Y。和0比较是为了载入Y，和9比较是为了停止计数。电路图如下</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212104218476.png" alt="image-20211212104218476" /><figcaption aria-hidden="true">image-20211212104218476</figcaption>
+</figure>
+<h2 id="mips运算器设计">MIPS运算器设计</h2>
+<p>大杂烩，没什么好说的，细心点照着要求连到多路选择器上。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212104710449.png" alt="image-20211212104710449" /><figcaption aria-hidden="true">image-20211212104710449</figcaption>
+</figure>
+<h1 id="存储系统设计">存储系统设计</h1>
+<h2 id="汉字字库存储芯片扩展实验">汉字字库存储芯片扩展实验</h2>
+<p>一个字扩展就行了，电路不难连，ROM里的内容是将原本第二个大ROM的内容填到小ROM里，第一个填完填第二个，我的填法是第一个ROM有4096个，第二个有4096个，第三个642个，第4个没有</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212105053385.png" alt="image-20211212105053385" /><figcaption aria-hidden="true">image-20211212105053385</figcaption>
+</figure>
+<h2 id="mips寄存器文件设计">MIPS寄存器文件设计</h2>
+<p>两个读端口用两个多路选择器就行了，写端口用一个译码器和写信号一起控制寄存器写使能端口。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212105354045.png" alt="image-20211212105354045" /><figcaption aria-hidden="true">image-20211212105354045</figcaption>
+</figure>
+<h2 id="mips-ram设计">MIPS RAM设计</h2>
+<p>先把对RAM的操作框架搭出来，这是一个位扩展</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212105634222.png" alt="image-20211212105634222" /><figcaption aria-hidden="true">image-20211212105634222</figcaption>
+</figure>
+<p>之后就是根据输入信号决定读啥，往哪儿读，写啥，往哪儿写。</p>
+<p>先处理数据输入。字访问时所有寄存器都要写入相应位数；字节访问时只写Din低八位，写到哪一个寄存器要用w控制，输入端只管怼数据就完了。半字访问时要求对齐，即要么存到0~15位，要么存到16~31位，怎么存依然看片选信号控制的w，数据只管怼，所以数据输入电路图如下</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212110751966.png" alt="image-20211212110751966" /><figcaption aria-hidden="true">image-20211212110751966</figcaption>
+</figure>
+<p>然后处理输出，按字访问时直接输出整个32位数据，按字节和半字的时候按片选信号选就行了。注意按字节访问时低两位片选，按半字访问时倒数第二位片选。电路图如下</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212110953381.png" alt="image-20211212110953381" /><figcaption aria-hidden="true">image-20211212110953381</figcaption>
+</figure>
+<p>最后处理w，即怎么写。当按字访问的时候写使能全开就好，按字节访问的时候一个译码器生成信号和字节访问信号与就行了。按半字访问的时候把倒数第二位信号用一个译码器和半字访问信号与就行了。电路图如下，半字访问时译码器放着不好布线我就直接用与门加非实现了。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212111858014.png" alt="image-20211212111858014" /><figcaption aria-hidden="true">image-20211212111858014</figcaption>
+</figure>
+<h2 id="路组相连cache设计">4路组相连cache设计</h2>
+<p>先处理地址。主存地址16位，一个数据块4字节，主存共有<span class="math inline">\(2^{14}\)</span>块，共有2组，tag最大<span class="math inline">\(2^{13}\)</span>，所以组索引1位，tag13位，块内偏移两位。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212112533941.png" alt="image-20211212112533941" /><figcaption aria-hidden="true">image-20211212112533941</figcaption>
+</figure>
+<p>再处理数据。一块四个字节，就是一个四路选择器。如下图</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212112625429.png" alt="image-20211212112625429" /><figcaption aria-hidden="true">image-20211212112625429</figcaption>
+</figure>
+<p>淘汰算法使用LRU算法，增加一个淘汰计数器。所以cache一行中有：有效位，tag，淘汰计数器，数据。cache构造如下，其中淘汰位控制cache行的替换，具体的实现逻辑后面再说。命中的时候输出块数据的同时清空计数器。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212113305903.png" alt="image-20211212113305903" /><figcaption aria-hidden="true">image-20211212113305903</figcaption>
+</figure>
+<p>之后写组相连查找逻辑，为了方便直接把有效位拿来一起比较</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212123702070.png" alt="image-20211212123702070" /><figcaption aria-hidden="true">image-20211212123702070</figcaption>
+</figure>
+<p>接下来是写入cache逻辑，主要就是分为cache没满和需要替换两种情况，先给出总体框架</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212125208075.png" alt="image-20211212125208075" /><figcaption aria-hidden="true">image-20211212125208075</figcaption>
+</figure>
+<p>接下来是如何确定写入和淘汰序号。写入很好说，根据组号确定哪个没满就行，先让行号小的填满，用个优先编码器</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212125317596.png" alt="image-20211212125317596" /><figcaption aria-hidden="true">image-20211212125317596</figcaption>
+</figure>
+<p>淘汰逻辑主要是比出计数器最大的哪个序号，MAX的用法为哪个大输出哪个，按道理不用全比，但是图个省事就全都放一起比了</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211212125350757.png" alt="image-20211212125350757" /><figcaption aria-hidden="true">image-20211212125350757</figcaption>
+</figure>
+<p>还差个miss序号，几个L全为0时输出就行</p>
+<figure>
+<img src="C:/Users/95498/AppData/Roaming/Typora/typora-user-images/image-20211212125601260.png" alt="image-20211212125601260" /><figcaption aria-hidden="true">image-20211212125601260</figcaption>
+</figure>
+<h1 id="cpu设计实验">CPU设计实验</h1>
+<p>实验报告地址：</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag"># 课程笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="prev" title="计算机组成原理">
+                  <i class="fa fa-chevron-left"></i> 计算机组成原理
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zz12138zz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+<script>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>

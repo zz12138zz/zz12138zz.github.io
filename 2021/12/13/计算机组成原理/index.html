@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="华中科技大学计算机学院19级组原，内容大部分来自大萝卜的教材《计算机组成原理（微课版）》和PPT,图全是ppt里扣的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理">
+<meta property="og:url" content="http://example.com/2021/12/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="某纯路人的博客">
+<meta property="og:description" content="华中科技大学计算机学院19级组原，内容大部分来自大萝卜的教材《计算机组成原理（微课版）》和PPT,图全是ppt里扣的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210923201546332.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210923202230827.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210924173528938.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211005104548928.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211005105427335.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211005173945571.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006103803976.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112308494.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112327324.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112539555.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006113740225.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006151815637.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006153700867.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006154322906.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006155808223.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006155932130.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006181227969.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008195830114.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008203313567.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009163617088.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008211645547.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009163956514.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009164014525.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009164246426.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009172725424.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011160321847.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011164019573.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011170044347.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011173240513.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208125645015.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208130044705.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208130514800.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208152941769.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208153207372.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208154223175.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208154836345.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208161056670.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208163147543.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208182140033.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208182434949.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208183254841.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209101554544.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209111139761.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209113916424.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209113751151.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209114747944.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209152919630.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209153054318.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154231667.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154505746.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154725658.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155405222.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155557793.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155701938.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209161002844.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209162414822.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209163804769.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209163825617.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209165910181.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209170633573.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209170847302.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209195555666.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209202606376.png">
+<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209223744854.png">
+<meta property="article:published_time" content="2021-12-13T09:12:56.000Z">
+<meta property="article:modified_time" content="2021-12-13T12:42:29.926Z">
+<meta property="article:author" content="zz12138zz">
+<meta property="article:tag" content="计算机组成原理">
+<meta property="article:tag" content="课程笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210923201546332.png">
+
+
+<link rel="canonical" href="http://example.com/2021/12/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>计算机组成原理 | 某纯路人的博客</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">某纯路人的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">计算机组成原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 计算机系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">计算机系统组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">计算机硬件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">计算机软件系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%93%E6%9E%84%E5%B1%82%E6%AC%A1"><span class="nav-number">1.1.2.</span> <span class="nav-text">计算机系统的结构层次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E8%AF%84%E4%BB%B7"><span class="nav-number">1.1.3.</span> <span class="nav-text">计算机系统性能评价</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E6%97%B6%E9%97%B4%E6%8C%87%E6%A0%87"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">非时间指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%8C%87%E6%A0%87"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">时间指标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 计算机数据表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%9A%84%E6%9C%BA%E5%99%A8%E7%A0%81%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.2.1.</span> <span class="nav-text">数的机器码表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.2.2.</span> <span class="nav-text">定点数表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">浮点数表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.4.</span> <span class="nav-text">其他编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">十进制编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E6%95%B0%E5%80%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">非数值数据的表示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A0%A1%E9%AA%8C"><span class="nav-number">1.2.5.</span> <span class="nav-text">数据信息的校验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E4%B8%8E%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-number">1.3.</span> <span class="nav-text">第三章 运算方法与运算器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E5%8A%A0%E5%87%8F%E6%B3%95%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.1.</span> <span class="nav-text">定点加减法运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81%E7%9A%84%E5%8A%A0%E5%87%8F%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E4%BB%A5%E5%8F%8A%E6%BA%A2%E5%87%BA%E6%A3%80%E6%B5%8B"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">补码的加减运算规则以及溢出检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E5%87%8F%E6%B3%95%E7%9A%84%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">加减法的逻辑实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E4%B9%98%E6%B3%95%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.2.</span> <span class="nav-text">定点乘法运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81%E4%B8%80%E4%BD%8D%E4%B9%98%E6%B3%95"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">原码一位乘法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81%E4%B8%80%E4%BD%8D%E9%99%A4%E6%B3%95"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">补码一位除法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B5%E5%88%97%E4%B9%98%E6%B3%95%E5%99%A8"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">阵列乘法器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E9%99%A4%E6%B3%95%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.3.</span> <span class="nav-text">定点除法运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.4.</span> <span class="nav-text">浮点运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-number">1.3.5.</span> <span class="nav-text">运算器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.</span> <span class="nav-text">第四章、存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">存储器概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.4.2.</span> <span class="nav-text">半导体存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81mos%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">静态MOS存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81mos%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">动态MOS存储器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E7%BB%84%E7%BB%87%E5%8F%8A%E4%B8%8Ecpu%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.3.</span> <span class="nav-text">主存的组织及与CPU的连接方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E4%B8%BB%E5%AD%98%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.4.</span> <span class="nav-text">并行主存系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%86%B2%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.4.5.</span> <span class="nav-text">高速缓冲存储器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cache%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">cache基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cache%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">cache读写流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E8%81%94%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.4.5.3.</span> <span class="nav-text">相联存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84"><span class="nav-number">1.4.5.4.</span> <span class="nav-text">地址映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="nav-number">1.4.5.5.</span> <span class="nav-text">替换算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E7%AD%96%E7%95%A5"><span class="nav-number">1.4.5.6.</span> <span class="nav-text">写入策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cache%E5%BA%94%E7%94%A8"><span class="nav-number">1.4.5.7.</span> <span class="nav-text">cache应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">1.4.6.</span> <span class="nav-text">虚拟存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cache%E7%9B%B8%E5%85%B3%E8%AE%A1%E7%AE%97"><span class="nav-number">1.4.7.</span> <span class="nav-text">cache相关计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.5.</span> <span class="nav-text">第五章 指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.2.</span> <span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.5.3.</span> <span class="nav-text">指令设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cisc%E5%92%8Crisc"><span class="nav-number">1.5.4.</span> <span class="nav-text">CISC和RISC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">1.6.</span> <span class="nav-text">第六章 中央处理器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.6.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%91%A8%E6%9C%9F"><span class="nav-number">1.6.2.</span> <span class="nav-text">指令周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E5%8F%8A%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.6.3.</span> <span class="nav-text">数据通路及指令操作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E4%B8%8E%E6%8E%A7%E5%88%B6"><span class="nav-number">1.6.4.</span> <span class="nav-text">时序与控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E5%B8%83%E7%BA%BF%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">1.6.5.</span> <span class="nav-text">硬布线控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">1.6.6.</span> <span class="nav-text">微程序控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E4%B8%8E%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86"><span class="nav-number">1.6.7.</span> <span class="nav-text">异常与中断处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.7.</span> <span class="nav-text">第九章 输入输出系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">1.7.1.</span> <span class="nav-text">输入输出设备的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#io%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.7.2.</span> <span class="nav-text">I&#x2F;O接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">1.7.3.</span> <span class="nav-text">数据传输控制方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">1.7.4.</span> <span class="nav-text">程序控制方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">1.7.5.</span> <span class="nav-text">程序中断控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.7.5.1.</span> <span class="nav-text">中断基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82"><span class="nav-number">1.7.5.2.</span> <span class="nav-text">中断请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E5%93%8D%E5%BA%94"><span class="nav-number">1.7.5.3.</span> <span class="nav-text">中断响应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E8%AF%86%E5%88%AB"><span class="nav-number">1.7.5.4.</span> <span class="nav-text">中断识别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dma%E6%96%B9%E5%BC%8F"><span class="nav-number">1.7.6.</span> <span class="nav-text">DMA方式</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zz12138zz"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">zz12138zz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zz12138zz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zz12138zz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:954988021@qq.com" title="E-Mail → mailto:954988021@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zz12138zz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="某纯路人的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机组成原理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-13 17:12:56 / 修改时间：20:42:29" itemprop="dateCreated datePublished" datetime="2021-12-13T17:12:56+08:00">2021-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">华中科技大学计算机学院19级组原，内容大部分来自大萝卜的教材《计算机组成原理（微课版）》和PPT,图全是ppt里扣的。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="计算机组成原理">计算机组成原理</h1>
+<h2 id="第一章-计算机系统概述">第一章 计算机系统概述</h2>
+<h3 id="计算机系统组成">计算机系统组成</h3>
+<p>一台完整的计算机包括硬件和软件两个部分，软件与硬件相互结合才能事计算机正常运行</p>
+<h4 id="计算机硬件系统">计算机硬件系统</h4>
+<p>硬件是构成计算机的物质基础，是计算机系统的核心。按照冯诺依曼的<strong>存储程序</strong>和<strong>程序控制</strong>的思想，计算机的硬件系统包含五大部分：<strong>存储器</strong>、<strong>控制器</strong>、<strong>运算器</strong>、<strong>输入设备</strong>和<strong>输出设备</strong>。各设备之间通过<strong>总线</strong>互连，总线由数据线、地址线和控制线组成。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210923201546332.png" alt="计算机硬件系统" /><figcaption aria-hidden="true">计算机硬件系统</figcaption>
+</figure>
+<h4 id="计算机软件系统">计算机软件系统</h4>
+<p>计算机软件将解决问题的思想方法和过程用程序等进行描述，程序是软件的核心组成部分。一台计算机中全部程序的集合称为这台计算机的软件系统。</p>
+<p>计算机软件按功能分为<strong>应用软件</strong>和<strong>系统软件</strong>。系统软件常分为以下几类：操作系统、程序设计语言及语言处理程序、数据库程序、应用程序。</p>
+<h3 id="计算机系统的结构层次">计算机系统的结构层次</h3>
+<p>计算机系统的结构层次分为六个抽象层次，高层是低层的扩展，低层是高层的基础，不同用户处在不同层次，不同层次具有不同属性，不同层次使用不同工具，不同层次的代码效率不同。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210923202230827.png" alt="计算机的层次结构" /><figcaption aria-hidden="true">计算机的层次结构</figcaption>
+</figure>
+<h3 id="计算机系统性能评价">计算机系统性能评价</h3>
+<h4 id="非时间指标">非时间指标</h4>
+<ul>
+<li>机器字长：机器一次能处理的二进制位数，一般与寄存器、运算器数据总线的位宽相等</li>
+<li>主存容量：是指一台计算机主存所包含的存储单元总数。</li>
+</ul>
+<h4 id="时间指标">时间指标</h4>
+<ul>
+<li>频率(f)、时钟周期(T)：时钟周期是计算机中最基本的、最小的时间单位。一个时钟周期CPU仅完成一个最基本的动作，<span class="math inline">\(f=\frac{1}{T}\)</span> ，针对频率还有主频和外频倍频等概念，主频就是前面所说的cpu频率，外频是系统总线的工作频率，即CPU与主板之间同步运行的速度，主频等于外频乘以倍频。</li>
+<li>CPI：指向一条指令的平均<strong>周期数</strong>（可以是单条指令，某个指令系统平均，或某个程序的所有指令平均），设一段程序总周期数为<span class="math inline">\(m\)</span>，总指令数为<span class="math inline">\(IC\)</span>， 其中第<span class="math inline">\(i\)</span>类指令CPI为<span class="math inline">\(CPI_i\)</span>，数量为<span class="math inline">\(IC_i\)</span>则<span class="math inline">\(CPI=\frac{m}{IC}=\Sigma_{i=1}^{n}(CPI_i\times\frac{IC_i}{IC})\)</span>。</li>
+<li>CPU时间：指CPU执行一段程序花费的时间，<span class="math inline">\(T_{CPU}=m\times T = \frac{m}{f}\)</span></li>
+<li>IPC:每个时钟周期能执行的指令条数,<span class="math inline">\(IPC=\frac{1}{CPI}\)</span></li>
+<li>MIPS：每秒百万条指令<span class="math inline">\(MIPS=\frac{IC}{T_{CPU} \times 10^6} = \frac{f}{CPI}\)</span>，其中<span class="math inline">\(f\)</span>的单位为兆赫兹</li>
+</ul>
+<h2 id="第二章-计算机数据表示">第二章 计算机数据表示</h2>
+<p>计算机内部流动的信息可以分为两大类：一类事数据信息，一类是控制信息。数据信息的表示直接影响运算器的设计。</p>
+<p>计算机中的数据信息用二进制表示，常见的2的幂如下</p>
+<p><span class="math display">\[2^5=32\qquad2^6=64\qquad2^7=128\qquad2^8=256\qquad2^9=512\qquad2^{10}=1024\qquad2^{16}=65536\qquad2^{31}=2147483648\]</span></p>
+<h3 id="数的机器码表示">数的机器码表示</h3>
+<p>真值：将用“+”、“-” 表示正负的二进制数称为真值，书写用，不是机器码</p>
+<p>原码：增加一位符号位，符号位为1表示负，0表示正，有两个机器0（正0和负0），加减运算不统一</p>
+<p>反码：原码基础上，符号位不变，负数按位各位取反，有两个机器0，加减运算统一为加法，但是相加时需要将符号位进位加到最低有效位上。</p>
+<p>补码：反码基础上，负数加一。利用了求模运算，将加减法统一为加法，只有一个机器0.</p>
+<blockquote>
+<p>两整数<span class="math inline">\(a\)</span>和<span class="math inline">\(b\)</span>，若用整数<span class="math inline">\(m\)</span>去除，如余数相同，就称<span class="math inline">\(a,b\)</span>对<span class="math inline">\(m\)</span>同余,记作：$ a b(modm)<span class="math inline">\(。若一个运算系统中只有小于一个数\)</span>m<span class="math inline">\(的数参与运算，所有大于\)</span>m<span class="math inline">\(的数对\)</span>m<span class="math inline">\(进行求模运算后在参加运算，则运算为有模运算。有模运算中，设\)</span>m<span class="math inline">\(为模，则\)</span>a-b a+(m-b) (mod m)<span class="math inline">\(，可将\)</span>-b<span class="math inline">\(换为\)</span>m-b<span class="math inline">\(，称为\)</span>-b$的补码</p>
+<p>由于在计算机中二进制数据有字长的显示，所以数据最高位的进位的按权值就是模数，运算结果超过模数的部分会舍去，所以计算机中二进制运算是有模运算。二进制数求负数的补码很简单。</p>
+</blockquote>
+<p>不同位数的补码向加减时需要将位数较短的数的符号位扩展。</p>
+<p>移码：真值加上一个偏移量后在表示为机器数称为移码，只在浮点数的阶码中使用，把指数加上偏移量全部变为正数方便表示。</p>
+<h3 id="定点数表示">定点数表示</h3>
+<p>定点数分为定点整数（小数点在最低位之后，表示整数）和定点小数（小数点在符号位之后，仅表示纯小数），皆采用补码表示。</p>
+<p>定点数表示范围的每一个数对应数轴上的一个刻度，且<strong>均匀分布</strong>，n位定点整数的最小间距为1，小数最小间距为<span class="math inline">\(2^{-n}\)</span>。由于位数限制，数据存在上溢（大于最大正数）、下溢（小于最小负数）、精度损失（精度大于小数最小间距）。</p>
+<p>C语言中不同类型整数表示范围</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210924173528938.png" alt="C语言中不同类型整数表示范围" /><figcaption aria-hidden="true">C语言中不同类型整数表示范围</figcaption>
+</figure>
+<h3 id="浮点数表示">浮点数表示</h3>
+<p>二进制浮点数采用类似十进制的科学计数法表示，任意一个二进制数N可表示为<span class="math inline">\(N=2^E \times M\)</span>，E称为阶码，M称为尾数，阶码的位数决定数的范围，尾码的位数决定数的精度。</p>
+<p>受机器字长限制，浮点数存在溢出现象，溢出情况如图</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211005104548928.png" alt="浮点数溢出" /><figcaption aria-hidden="true">浮点数溢出</figcaption>
+</figure>
+<p>同一浮点数采用科学计数法表示时可以有多种表示形式，如<span class="math inline">\(0.01111 \times 2^{101}\)</span>还可以表示为<span class="math inline">\(0.11110 \times 2^{100}\)</span>，为了统一表达方式，将尾数真值最高有效位为1的数称为规格化数，将非规格化数转换为非规格化数的操作称为浮点数的<strong>规格化操作</strong>。</p>
+<p>在浮点数的一般格式中，没有规定阶码和尾数的位数，也没有规定阶码和尾数采用的机器码形式。浮点数表示广泛采用的标准是<strong>IEEE754浮点数标准</strong>，其规定了32位单精度和64位双精度浮点数的表示规范，如下图。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211005105427335.png" alt="IEEE754" /><figcaption aria-hidden="true">IEEE754</figcaption>
+</figure>
+<p>阶码采用移码表示，32位浮点数偏移量为127，64位为1023，由于单独存储了符号位，尾数绝对值真值形式为<span class="math inline">\(1.xxxxxx\)</span>，首位的1不需要存储。</p>
+<p>以单精度浮点数为例，IEEE754标准中当阶码E为1~254之间时，其可以表示<strong>绝对值</strong>在<span class="math inline">\(2^{126}\)</span>到<span class="math inline">\(2^{127}\times(2-2^{-23})\)</span>之间的规格化数，当阶码为0或255时，根据尾码不同可以表示为不同的特殊值，如下表所示</p>
+<table>
+<thead>
+<tr class="header">
+<th>阶码</th>
+<th>尾数</th>
+<th>表示</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>正负0（根据符号位）</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>非0</td>
+<td>非规格化数<span class="math inline">\((-1)^S\times(0.M)\times2^{-126}\)</span></td>
+</tr>
+<tr class="odd">
+<td>255</td>
+<td>0</td>
+<td>正负无穷</td>
+</tr>
+<tr class="even">
+<td>255</td>
+<td>非0</td>
+<td>非数（NaN），表示运算异常</td>
+</tr>
+</tbody>
+</table>
+<p>浮点数在数轴上的表示是<strong>不均匀</strong>的，导致大数加小数时可能会导致小的数字被吸收，故不满足结合律。</p>
+<h3 id="其他编码">其他编码</h3>
+<h4 id="十进制编码">十进制编码</h4>
+<p>表示十进制整数的方法有BCD码（8421、2421、余3码等），BID码（直接用二进制表示十进制），DPD码（用十个二进制位表示三位十进制数）</p>
+<h4 id="非数值数据的表示">非数值数据的表示</h4>
+<p>常用西文字符采用ASCII编码表示，其占一个字节，使用一个字节中的七位表示128个符号，最高位为0，0的编码为30H，A的编码为41H，a的编码为61H。</p>
+<p>汉字编码的GB2312标准使用两个字节表示汉字，两个字节的最高位都是1，实际采用编码的位数为14位。为了检索方便，还采用94*94的矩阵存储汉字，每个汉字对应的行称为区，列称为位，区号位号组合的编码称为区位码，<strong>区位码+A0A0H=GB2312</strong></p>
+<p>GB2312中的汉字有限，后来又推出了其他编码规范扩充汉字编码。</p>
+<p>汉字在计算机处理的各个阶段需要采用不同的编码，上述GB2312属于计算机内部汉字处理编码，称为<strong>机内码</strong>，在输入汉字时需要才用的编码称为<strong>输入码</strong>，GB2312可作为输入码，常见的输入码还有拼音码、五笔字型码等，显示汉字时需要采用<strong>字形码</strong>。</p>
+<h3 id="数据信息的校验">数据信息的校验</h3>
+<p>码距：两个编码对应的二进制位不同的个数称为码距，一个有效编码集中，任意两个码字的最小码距称为编码集的码距。码距越大，抗干扰能力越强，编码效率也越低。</p>
+<p>码距与纠错性能之间有如下关系：</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211005173945571.png" alt="码距" /><figcaption aria-hidden="true">码距</figcaption>
+</figure>
+<p>奇偶校验：通过检测二进制代码中1的个数的奇偶性进行数据校验，奇校验要求1的个数为奇数，偶校验要求1的个数为偶数。</p>
+<p>简单奇偶校验：在编码的最后一位增加校验位以进行奇偶校验，校验位的生成方式为将数据逐位异或，得到的结果就是偶校验位，结果取反就是奇校验位；检错时将接受的数据全部逐位异或，得到的结果是偶校验的结果，取反则得到奇校验的结果，结果为1时说明数据出错。</p>
+<p>交叉奇偶校验：简单奇偶校验无法定位错误，交叉奇偶校验将数据排列为矩阵，为矩阵每行每列增加校验位，通过对每行每列进行简单奇偶校验确定出错位置。</p>
+<p>海明校验：本质依然是多重奇偶校验。一个海明校验码包含若干校验位和原始数据，校验位穿插在原始数据之间。设海明码（注意海明码不是只有校验码，是校验码加上原始数据）有N位，其中数据位k位，校验位r位，则有<span class="math inline">\(N=k+r\le2^r-1\)</span>，通过这个式子确定校验位数量，<strong>校验位分布在海明编码的2的整数次幂的位置上（位置序号从0开始编号，下同），其余位则为原始数据。每个校验位对应一个简单奇偶校验组，校验组的分组是看该位的序号的二进制表示的某一位上若是1，则该位处于这些位上同样是1的校验位所处的校验组。校验组确定后，通过简单奇偶校验生成校验位，就获得海明编码。</strong>阶码时，按校验组进行简单奇偶校验的检错，得到一组纠错码，纠错码不为0时则指示了出错位。</p>
+<blockquote>
+<p>假设原始数据有7位，根据不等式可以确定校验位有4位，则海明编码有11位，其中第1位，第2位，第4位，第8位为校验位，其余位按原始数据顺序填入原始数据。</p>
+<p>分组时，假设对海明编码第3位的数据，即原始数据的第一位，3的二进制表示为011，故其被分到第1（0001）位的校验位和第2（0010）位的校验位对应的校验组。对海明编码第10位的数据，即原始数据的第6位，10的二进制表示为1010，故其被分配在第2（0010）位对应的校验组和第8（1000）位对应的校验组。</p>
+</blockquote>
+<p>上述编码的检测结果出错时都说明数据一定出错，但是结果没错时不能保证数据也没错。</p>
+<p>根据码距与纠错性能之间的关系可知，海明校验可以纠正一位错误，发现两位错误，但是无法辨别是哪一种情况，，于是可以加上一个总的奇偶校验位，以区分是一位错还是两位错。</p>
+<p>CRC循环冗余校验：设CRC码有N位，其中数据位k位，校验位r位，则有<span class="math inline">\(N=k+r\le2^r-1\)</span>,通过该式可以确定校验位的位数。在CRC循环校验码中，前k位是数据位，后r位是校验位。校验位的生成方式是<strong>首先确定生成多项式，然后将数据位左移r位，低位补0，除以生成多项式进行模2运算得到余数，用余数替换低r位</strong>，解码时将得到的CRC码除以生成多项式进行模2运算得到余数，若余数为0说明数据大概率没有错误，若余数为其他值则对应某一位出错。</p>
+<blockquote>
+<p>CRC编码的非0的余数具有循环特性，即余数左移一位会得到下一余数，可以通过循环过程中移动原始数据确定出错位数。</p>
+</blockquote>
+<h2 id="第三章-运算方法与运算器">第三章 运算方法与运算器</h2>
+<h3 id="定点加减法运算">定点加减法运算</h3>
+<h4 id="补码的加减运算规则以及溢出检测">补码的加减运算规则以及溢出检测</h4>
+<p>定点加减法即补码的加减法，满足下面三个式子</p>
+<p><span class="math display">\[[X+Y]_补=[X]_补+[Y]_补\]</span></p>
+<p><span class="math display">\[[X-Y]_补=[X]_补+[-Y]_补\]</span></p>
+<p><span class="math display">\[[-Y]_补=[[Y]_ 补]_补\]</span></p>
+<p>其中第三个式子外层的求补是全部按位求反再加1。根据上述三个式子可以将加减运算统一为加运算。</p>
+<p>在定点数的加法运算中，当两个加数的符号相同时可能产生溢出，溢出表现为两正数相加得到负数或两负数相加得到正数，设两加数符号位为<span class="math inline">\(f_0\)</span>和<span class="math inline">\(f_1\)</span>，结果符号位为<span class="math inline">\(f_s\)</span>，则溢出检测位<span class="math inline">\(OF=\bar{f_0}\bar{f_1}f_s+f_0f_1\bar{f_s}\)</span>。还可以通过数据位最高位进位<span class="math inline">\(C_1\)</span>和符号位产生的进位<span class="math inline">\(C_0\)</span>进行检测，则<span class="math inline">\(OF=C_1 \oplus C_0\)</span>。还可以通过设置双符号位检测溢出，初始将两个加数的符号位设置为双符号位，正数设置为00，负数设置为11，结果的符号位依然为00或11则未发生溢出，为10则发生下溢，为01则发生上溢，双符号位硬件开销较大，一般计算机内很少使用，在手工计算时可以使用。</p>
+<h4 id="加减法的逻辑实现">加减法的逻辑实现</h4>
+<p>一位全加器可以使用组合逻辑实现，，设加数分别为<span class="math inline">\(X_i\)</span>，<span class="math inline">\(Y_i\)</span>，来自之前的进位为<span class="math inline">\(C_i\)</span>，产生的结果和进位为<span class="math inline">\(S_i\)</span>，<span class="math inline">\(C_{i+1}\)</span>，则根据真值表可知<span class="math inline">\(S_i=Xi \oplus Y_i \oplus C_i\)</span>，<span class="math inline">\(C_{i+1} = X_iY_i+(X_i+Y_i)C_i\)</span>，根据一位全加器可以串联得到串行进位加法器。溢出检测同样可以基于逻辑表达式用相应组合逻辑电路实现。加减法可以通过设置初始进位以及一个加数的按位求反实现，如下图。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006103803976.png" alt="四位串行可控加减法电路" /><figcaption aria-hidden="true">四位串行可控加减法电路</figcaption>
+</figure>
+<p>还可以利用逻辑表达式直接计算出一些位的进位，从而设计并行进位加法器，也成为先行进位加法器，即通过组合逻辑直接从输入获得进位而不需要等待上一位全加器产生的进位，可以增加计算速度但是会使电路变复杂，因此一般四位一组进行先行进位。</p>
+<p>观察一位全加器，发现进位可以写为<span class="math inline">\(C_{i+1}=G_i+P_iC_i\)</span>的形式，而<span class="math inline">\(G_i\)</span>，<span class="math inline">\(P_i\)</span>可以推导出来，于是可以设计四位与门异或门电路产生<span class="math inline">\(G_i\)</span>和<span class="math inline">\(P_i\)</span>，先行进位电路产生进位，如下图所示</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112308494.png" alt="image-20211006112308494" /><figcaption aria-hidden="true">image-20211006112308494</figcaption>
+</figure>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112327324.png" alt="image-20211006112327324" /><figcaption aria-hidden="true">image-20211006112327324</figcaption>
+</figure>
+<p>从而实现四位先行进位加法器</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112539555.png" alt="image-20211006112539555" /><figcaption aria-hidden="true">image-20211006112539555</figcaption>
+</figure>
+<p>四位并行进位ALU串联可以构成更高位的ALU，同样我们可以通过分析逻辑表达式，发现 <span class="math inline">\(C_4\)</span>同样可以表示为形如<span class="math inline">\(C_4=G+PC_0\)</span>的式子，所以我们可以打破串行进位实现先行进位，即设计一个类似单个四位先行ALU中的四位先行进位电路的四位之间成组进位电路，其需要输入初始进位<span class="math inline">\(C_0\)</span>以及每个四位加法器产生的<span class="math inline">\(G\)</span>和<span class="math inline">\(P\)</span>。称为成组进位传递函数以及成组进位生成函数如下图所示。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006113740225.png" alt="image-20211006113740225" /><figcaption aria-hidden="true">image-20211006113740225</figcaption>
+</figure>
+<p>以此类推，当构建更大的并行进位电路时，我们还可以增加再一层先行进位电路</p>
+<h3 id="定点乘法运算">定点乘法运算</h3>
+<p>实现定点数的乘法有三种方法，一是利用加法器，而是单独设计乘法运算电路，三是设计软件程序</p>
+<h4 id="原码一位乘法">原码一位乘法</h4>
+<p>参照手工列竖式计算时将一个乘数与另一个乘数的每一位相乘再左移相加的思想，设计将一个乘数与另一个乘数每一位相乘得到部分积后右移一位，移出的位保存到另一个乘数寄存器中，再将移动后的部分积与新的部分积相加，重复操作，当右移位数等于另一个乘数的数值位的位数时运算结束，得到的最终部分积与另一个乘数寄存器拼接起来就是最终乘积。原码一位乘法符号位单独运算，乘法运算过程中只有绝对值参加运算。如下图是0.1101和0.0011相乘的步骤，紫色部分移入存放0.0011的寄存器 。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006151815637.png" alt="image-20211006151815637" /><figcaption aria-hidden="true">image-20211006151815637</figcaption>
+</figure>
+<p>原码一位乘法硬件实现如图</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006153700867.png" alt="image-20211006153700867" /><figcaption aria-hidden="true">image-20211006153700867</figcaption>
+</figure>
+<h4 id="补码一位除法">补码一位除法</h4>
+<p>补码一位乘法类似原码一位乘法，但是在更新部分积要加上的数时需要看另一个乘数的最后一位与附加位，可以理解为将另一个乘数在右边扩充一位0后看最后两位，当两位为11或00时累加上0，为01时加上另一个乘数的补码，为10时加上相反数的补码。其余移动规则与原码一位加法一致。0.1101与1.1101相乘的步骤如下</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006154322906.png" alt="image-20211006154322906" /><figcaption aria-hidden="true">image-20211006154322906</figcaption>
+</figure>
+<h4 id="阵列乘法器">阵列乘法器</h4>
+<p>上述乘法器存在大量循环运算因此效率不高，考虑设计不需要循环的乘法器，于是可以设计模拟手工乘法的阵列乘法器，如下图</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006155808223.png" alt="image-20211006155808223" /><figcaption aria-hidden="true">image-20211006155808223</figcaption>
+</figure>
+<p>但是由于存在串行进位，该乘法器效率依然不高，考虑到每一列的进位是对下一列一整列的加法起作用的，于是可以设计效率更高的阵列乘法器</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006155932130.png" alt="image-20211006155932130" /><figcaption aria-hidden="true">image-20211006155932130</figcaption>
+</figure>
+<p>此时同一行之间不存在串行进位，在最后一行有串行进位处理所有的进位即可。</p>
+<p>上面是原码阵列乘法器，对补码，只需处理一下补码即可。</p>
+<h3 id="定点除法运算">定点除法运算</h3>
+<p>根据手工除法，我们可以总结出原码余数恢复的除法方法，即不断试商然后求余右移，当余数为正数时说明商可以上1，为负数时说明应该上0，然后加上之前减去的除数。一个简单的例子如下，计算0.1001除以0.1011</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006181227969.png" alt="image-20211006181227969" /><figcaption aria-hidden="true">image-20211006181227969</figcaption>
+</figure>
+<p>本例中一开始尝试减除数，发现减得负数，于是上0后加上除数，上完商后余数右移，再尝试减除数，发现可以减而后上1，上完后移动余数，直至商的精度和除数精度一致。</p>
+<p>由于恢复余数的操作次数不确定造成运算时间不确定，会拖慢除法速度，实际一般采用不恢复余数除法。</p>
+<p>不恢复余数除法中,先直接减去除数，然后根据余数的正负，上1或0，然后余数左移，再根据本次上商为0或1，加上或减去余数，得到余数后重复上述步骤直至达到精度。下图为0.1001除以0.1011步骤</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008195830114.png" alt="image-20211008195830114" /><figcaption aria-hidden="true">image-20211008195830114</figcaption>
+</figure>
+<p>参考原码一位乘法的电路，可以设计如图所示的原码不恢复余数一位除法计算电路</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008203313567.png" alt="image-20211008203313567" /><figcaption aria-hidden="true">image-20211008203313567</figcaption>
+</figure>
+<h3 id="浮点运算">浮点运算</h3>
+<p>浮点数加减运算步骤：对阶，尾数运算，规格化，舍入，溢出判断。</p>
+<ol type="1">
+<li>对阶：为防止尾数上溢，采取小阶对大阶，将小阶尾数右移。可以用保留位暂时保留移出位</li>
+<li>尾数运算：对阶后直接运算</li>
+<li>规格化：为保证浮点数的编码唯一性，按照一定标准规格化浮点数，尾数右移阶码增加称为右规，尾数左移阶码减小称为左归。为了处理方便，可以让尾数的符号位扩展为双符号位，当尾数运算结果不为11.0……或00.1……的形式时，应进行相应的规格化处理，若符号位为01或10说明发生上溢，右规一位即可，当运算结果为11.1……或00.0……时需要一直左归至不需要左归。</li>
+<li>舍入：右规时有的位会被移出，从而产生误差，要进行舍入，常用的舍入方法有两种，一是只要移出的位中有一位是1就将末尾位置1，二是根据丢失的最高位进行0舍1入。</li>
+<li>溢出判断：判断阶码是否溢出</li>
+</ol>
+<p>对IEEE754浮点数，其计算过程与上面相似，具体的不同表现在规格化的方式（按IEEE754规格化数处理）、舍入处理（朝正无穷舍入、朝负无穷舍入、朝0舍入）、溢出判断（阶码全1上溢，全0下溢）</p>
+<p>浮点数乘法运算，只需将阶码相加、尾数相乘、结果规格化即可。除法运算首先将尾数调整为被除数大于除数，然后阶码求差，尾数相除</p>
+<h3 id="运算器">运算器</h3>
+<p>运算器是对数据进行加工处理的部件，具体可分为定点运算部件和浮点运算部件，定点运算部件又称为算术逻辑单元。</p>
+<p>定点运算器一般包含算术逻辑运算单元（ALU）用于处理数据、输出结果和状态，通用寄存器组用于暂存结果、状态、指示内存，输入、输出数据选择控制和内部总线用于连接各个ALU、通用寄存器组、缓冲寄存器。</p>
+<p>运算器的基本结构与运算器中的总线结构以及运算部件与总线的连接方式相关，分为单总线结构、双总线结构以及三总线结构三种。</p>
+<p>单总线结构运算器如下图，由于同一时刻总线上只能传输一个数据，而ALU需要两个操作数以及，故需要设计两个缓冲器放在两个输入端（当两个缓冲器都有数字后ALU输出结果通过总线到通用寄存器）或者一个在输入一个在输出（一个输入缓冲有数据后从总线得到第二个数据ALU输出结果保存在输出缓存，再由输出缓存输出至寄存器），完成一次运算需要三个时钟周期</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009163617088.png" alt="image-20211009163617088" /><figcaption aria-hidden="true">image-20211009163617088</figcaption>
+</figure>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008211645547.png" alt="image-20211008211645547" /><figcaption aria-hidden="true">image-20211008211645547</figcaption>
+</figure>
+<p>双总线运算结构如下图，需要设计一个寄存器以解决某一个总线上的数据冲突问题。一次运算需要2个时钟周期</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009163956514.png" alt="image-20211009163956514" /><figcaption aria-hidden="true">image-20211009163956514</figcaption>
+</figure>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009164014525.png" alt="image-20211009164014525" /><figcaption aria-hidden="true">image-20211009164014525</figcaption>
+</figure>
+<p>三总线结构如下，旁路器的作用是进行寄存器间的数据传输，不需要缓存，一个时钟周期可以得到结果。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009164246426.png" alt="image-20211009164246426" /><figcaption aria-hidden="true">image-20211009164246426</figcaption>
+</figure>
+<p>至于浮点运算器，一般需要采用流水线来完成浮点数加减运算的几个步骤。</p>
+<h2 id="第四章存储系统">第四章、存储系统</h2>
+<h3 id="存储器概述">存储器概述</h3>
+<p>存储器分类：</p>
+<ul>
+<li>按介质：半导体存储器（速度快，功耗低）、磁存储器（容量大、速度慢、体积大），激光存储器（便于携带、廉价、易于保存）</li>
+<li>按存储方式：随机存储器、顺序存储器</li>
+<li>按读写功能粉：只读存储器（ROM），读写寄存器</li>
+<li>按信息的可保存性：易失性寄存器，非易失性寄存器</li>
+<li>按再计算机系统中的作用分：主存储器、辅助存储器、高速缓冲寄存器、控制寄存器</li>
+</ul>
+<p>存储系统的技术指标：</p>
+<ul>
+<li>存储时间：从接受到命令到执行完操作的时间</li>
+<li>存储周期：连续执行两次访问存储器所需要的最短时间</li>
+<li>存储器带宽：单位时间存储器存取的信息量。</li>
+</ul>
+<p>存储系统分层结构：</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009172725424.png" alt="image-20211009172725424" /><figcaption aria-hidden="true">image-20211009172725424</figcaption>
+</figure>
+<p>主存储器（内存）的特征</p>
+<ul>
+<li>由半导体MOS存储器组成</li>
+<li>按单元存储（支持不同大小的访问，但一般为字节、半字或字）<em>此处的字是指机器字长而非两个字节</em></li>
+<li>数据在主存中的存放存在对齐和非对齐两种方式，非对齐方式所有数据紧凑存储，对齐方式下数据存放的地址与数据的长度有关，只存储在数据的长度的整数倍的地址或者机器字长整数倍的地址上以保证计算机能够以最少的次数访问到数据。同时对超过一个字节的数据还存在大端与小端的区别，大端模式下低地址内存存放数据的高字节，小端模式下低地址内存存放数据的低字节。</li>
+</ul>
+<h3 id="半导体存储器">半导体存储器</h3>
+<h4 id="静态mos存储器">静态MOS存储器</h4>
+<p>静态MOS存储器（SRAM）<strong>六管存储单元</strong>如下图，其中红框部分六管一般被封装，其中的数据信息由T1 T3 T5的交点（记为A）和T2 T4 T6交点（记为B）的电位高低表示。</p>
+<p>八管中T1 T2为工作管，两管通过互锁的稳态保证AB两点一个为高电位，一个为低电位。</p>
+<p>T3 T4为负载管，提供能量。保证数据信息的保持</p>
+<p>外围四管T5 T6 T7 T8为门控管，在XY译码线都接高电平时为导通状态，通过I/O接电位时进行写操作，或者通过IO输出信号得到存储的值。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011160321847.png" alt="image-20211011160321847" /><figcaption aria-hidden="true">image-20211011160321847</figcaption>
+</figure>
+<p>SRAM由于MOS管过多，功耗较大，存储密度低，单位容量成本高</p>
+<p>得到SRAM存储单元后，可以根据存储单元扩展并且引入译码器得到SRAM存储器，有两种扩展方式，一维扩展所有单元由一个译码器的到信号控制X Y译码线，二维扩展单元由行列两个译码器分别控制译码线以获得某个单元的数据。由于一维扩展中译码器输出过多，开销过大，常采用二维扩展。</p>
+<p>上面给出了一次访问一个比特数据的方法，若想一次访问多个bit，可将一位存储器的地址线并联在一起。</p>
+<p>静态MOS存储器的结构如下图所示，设计思想基于前面的讨论，增加的驱动器是由于译码器一根输出线要负载一整行或一整列三极管，为保证负载能力增加驱动器</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011164019573.png" alt="image-20211011164019573" /><figcaption aria-hidden="true">image-20211011164019573</figcaption>
+</figure>
+<h4 id="动态mos存储器">动态MOS存储器</h4>
+<p>SRAM由于MOS管过多，功耗较大，存储密度低，单位容量成本高。为了减少MOS管数量，可以去掉两个负载管，换成电容，设计如下四管DRAM存储器存储单元。该存储单元依然由A、B两点电位表示信息，将负载电路换为两个电容，同时为电容配套相应充电的T9 T10以及旁路电容CD</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011170044347.png" alt="image-20211011170044347" /><figcaption aria-hidden="true">image-20211011170044347</figcaption>
+</figure>
+<p>该单元的写操作和SRAM的分析一致，两译码器接高电位，T5 T6 T7 T8导通，通过I/O写入信息同时给C1 C2其中一个充电。</p>
+<p>读操作时，由于C1 C2电容一般很小，无法用于产生信号表示信息且信息会丢失，所以需要首先打开预充MOS管对旁路电容充电，然后关闭预充MOS管，后X接高电位打开T5 T6，旁路电容的一路会和C1 C2中充过电的相连，不会消耗太多电荷，另一路则会由于T1 T2中的某一路饱和导通而快速放电，然后Y接高电位，通过旁路电容可以产生电流信号判断存储内容。</p>
+<p>由于C1 C2无法长时间保存电荷，DRAM还需要周期性刷新以保证信息不丢失，刷新的方式与读操作类似，但是不需要Y线信号，只需要X的信号，所以刷新是根据行来的，每一行都要刷新。要求刷新周期小于C1 C2保持电荷的时间以防数据丢失。</p>
+<p>一般来说刷新周期肯定远大于读写周期，且刷新一次的时间约等于一次读写时间，所以存在在一个刷新周期中什么时候读写，什么时候刷新，即刷新方式的问题</p>
+<blockquote>
+<p><em>其实刷新就是给电容充电，可以理解为刷新周期内必须给电容续一次命，现在就是讨论什么时候续命</em></p>
+</blockquote>
+<ul>
+<li>第一种方式是一个周期中集中留出一段时间对所有行进行刷新，好处是用时短，坏处是集中刷新时无法读写存在死区。称为集中刷新方式。</li>
+<li>第二种方式是每读写一次就刷新一次，由于这样会在一个刷新周期重复刷新多次，好处是死区分散了，坏处是效率低下。称为分散刷新方式</li>
+<li>第三种方式是将每一行的刷新平均分配到刷新周期中去，这样能够保留第一种方式的好处，分散之后遇到无法读写的时间的概率也大大减小。称为异步刷新。</li>
+</ul>
+<p>观察DRAM存储单元结构图，我们可以精简预充电路，同时仅将电容有无电荷作为数据的标识，可以得到常用的单管DRAM。如下图</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011173240513.png" alt="image-20211011173240513" /><figcaption aria-hidden="true">image-20211011173240513</figcaption>
+</figure>
+<p>6管SRAM 功耗加大，MOS管过多，存储密度低，单位容量成本高，主要用于CPU内部的cache，目前计算机内存普遍采用的是单管DRAM技术。</p>
+<h3 id="主存的组织及与cpu的连接方式">主存的组织及与CPU的连接方式</h3>
+<p>单片存储芯片的存储容量有限，要获得一个大容量的存储器时，通常需要将多片存储芯片按照的方式一定的方式组织起来。存储器的组织要进行的具体操作就是将存储芯片与CPU地址线，数据线和控制线进行连接。需要注意以下几点：</p>
+<ol type="1">
+<li>连接地址线的数量与主存容量有关</li>
+<li>连接数据线的数量与机器字长有关</li>
+<li>不同芯片的控制线的类型不同，SRAM有片选信号和读写控制线，ROM只有片选信号，DRAM没有片选信号</li>
+</ol>
+<p>存储器的扩展方式有两种，一是位扩展，即数据总线扩展，将所有芯片的地址线和读写控制线并联后与CPU的地址线和读写控制线相连。一个地址激活多个芯片，芯片将这些数据并行输入数据总线，如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208125645015.png" alt="image-20211208125645015" /></p>
+<p>第二种是字扩展，即容量扩展，将地址位多出的部分连接到译码器，译码器的输出接存储芯片的片选信号，地址线剩下的位接到每一个存储芯片，相当于翻书时先用译码器找到页码，然后读出那一页的行号列号，如下图所示。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208130044705.png" alt="image-20211208130044705" /></p>
+<p>当然也支持字位同时扩展，效果如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208130514800.png" alt="image-20211208130514800" /></p>
+<h3 id="并行主存系统">并行主存系统</h3>
+<p>使用存储系统的并行性来提高其存取速度，有以下几种方式</p>
+<ul>
+<li>双端口存储器，即一个存储器有两个端口，两个端口可独立读写，但访问地址相同时会产生访问冲突，访问冲突难以避免所以双端口存储器速度不可能提高两倍</li>
+<li>单体多字存储器，类似位扩展，多个存储模块共享地址总线，并行访问不同模块的同一单元。在联动模式下和位扩展一样，在非联动模式下则相当于有多根地址总线控制多个存储模块。</li>
+<li>多体交叉存储器，分为高位多体交叉和低位多体交叉，前者时为了扩充存储器的容量，和字扩展一样通过高位地址分块，低位地址作为块内地址，显然一块内地址是连续的。低位交叉模块用低位分块相邻地址不在同一块内，因此可以并发取出相邻的块。</li>
+</ul>
+<h3 id="高速缓冲存储器">高速缓冲存储器</h3>
+<p>高速缓冲存储器cache位于CPU和主存之间，主存一般是DRAM，而cache为速度更快的SRAM。由于计算机在运行程序时指令和数据在主存中顺序存放，且循环语句会在短时间内执行多次，所以有着良好的时空局部性。为了提高读取数据的速率，可以利用程序局部性将经常访问的数据放入高速cache中。增加了cache之后，CPU不再访问慢速的主存，而是通过字节地址快速访问cache。</p>
+<h4 id="cache基本概念">cache基本概念</h4>
+<p>关于cache有以下概念：如果数据在cache中则称为<strong>数据命中（Hit）</strong>，将命中时的数据访问时间，包括查找时间和访问时间称为<strong>命中访问时间t<sub>c</sub></strong>，如果数据不在cache中则称为<strong>数据缺失（Miss）</strong>，数据缺失时的访问时间称为<strong>缺失补偿</strong>，缺失补偿的时间包括数据查找，主存访问，cache访问，其中访问主存的时间t<sub>m</sub>较为漫长。</p>
+<p>为了便于比较和查找，cache和主存都被分为若干个固定大小的<strong>数据块（Block）</strong>，数据以块为单位从内存加载进主存，即一个数据缺失时，数据的相邻数据会随块一同加载如cache，能够较好利用空间局部性。进行数据分块后，主存和cache的地址都被分为块地址和块内偏移地址，显然cache的块地址字段小于主存的块地址字段。</p>
+<p>cache除了存储数据外还需要存储数据相关信息，如该数据是否有效，是否是脏数据等，这些信息是标志信息，一个cache数据块和相关标志信息一起称为一个cache行或者cache槽。</p>
+<p>cache的评价指标有：</p>
+<ul>
+<li>命中率<span class="math inline">\(h\)</span>，设 <span class="math inline">\(N_{c}\)</span>为命中次数，<span class="math inline">\(N_m\)</span>为从主存中访问信息的次数，则<span class="math inline">\(h=\frac{N_c}{N_c+N_m}\)</span></li>
+<li>缺失率，<span class="math inline">\(1-h\)</span></li>
+<li>访问效率<span class="math inline">\(e\)</span>，设平均访问时间为<span class="math inline">\(t_a\)</span>，则<span class="math inline">\(e=\frac{t_a}{t_c} = \frac{t_c}{ht_c+{1-h}t_m} = \frac{1}{h+(1-h)r}\)</span></li>
+</ul>
+<h4 id="cache读写流程">cache读写流程</h4>
+<p>有了cache之后，CPU访问主存的读流程如下，基本流程是先访问cache，cache有则从cache读，cache没有再从内存读并存入cache。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208152941769.png" alt="image-20211208152941769" /></p>
+<p>CPU写数据的流程如下，写操作有两个需要注意的点，一是命中时写入cache后主存和cache的数据就不相同了，这样数据称为脏数据（DirtyData），此时要不要同步数据，即是执行写穿还是写回，前者慢但没有脏数据，后者块但是有脏数据；第二个问题是缺失时是否执行写分配，即对写入数据要不要放入cache。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208153207372.png" alt="image-20211208153207372" /></p>
+<p>通过上面的流程图可以看出实现cache的关键技术，分别有数据的查找方式，cache与内存的地址映射策略，cache满后替换块的策略以及写入策略。其中数据查找方式和地址映射策略紧密相关，因为CPU是通过主存地址在cache中查找数据的。</p>
+<h4 id="相联存储器">相联存储器</h4>
+<p>查找数据的基本模型是相联存储器（CAM），由相等比较器和三态门以及存储设备组成，基本单元为键值对，输入键值，键值与存储键值的存储单元比较，相当输出对应数据三态门打开使数据输出，基本结构如下，其查找是并发进行的，查找速度非常快，但是硬件成本很高。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208154223175.png" alt="image-20211208154223175" /></p>
+<h4 id="地址映射">地址映射</h4>
+<p>地址映射有以下几种模型</p>
+<p>全相联映射：cache的每一个位置都可以存放任意数据块，相当于一个CAM，通过块地址TAG查找块，然后通过偏移地址选择块内哪个数据输出。写入数据时同样先查找，命中后写入数据并将脏数据位置1。其硬件实现模型如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208154836345.png" alt="image-20211208154836345" /></p>
+<p>全相联cache有以下特点：</p>
+<ul>
+<li>一行可以存放任意一块主存数据，cache利用率高</li>
+<li>只要有空行就不会起冲突</li>
+<li>每一行对应一个比较电路，成本高</li>
+<li>由于几乎没有组织策略，所以替换策略复杂</li>
+</ul>
+<p>直接相联映射：一个主存地址块只能映射到某一个固定的cache行，位置为主存块号对cache行数取模，设cache行数为n，则相当于对于主存中的块n个一组，称为一个区，主存地址可以被分为区地址，行索引和块内偏移。行可以直接通过译码器选中，一行就对应那么几个区，只要区地址相等就命中，否则没命中替换掉就好。硬件实现如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208161056670.png" alt="image-20211208161056670" /></p>
+<p>直接相联cache有以下特点：</p>
+<ul>
+<li>主存中的数据块只能映射到特定行，cache利用率低，命中率也同样降低</li>
+<li>不同区同一行放在cache同一行中，在cache未满时也会发生冲突</li>
+<li>只需要一个比较器，成本低</li>
+<li>不需要复杂的替换算法，冲突直接换新的</li>
+</ul>
+<p>组相联cache：将cache分为固定大小的组，每组k行，称为k路组相联，主存数据块先采用直接相连的方式定位到固定的组，组内采用全相联映射到cache行。此时主存地址分为标记tag，组索引index和块内偏移offset。组索引可以快速确定到一个小范围cache，然后在组内通过tag比较。一个二路组相联的硬件实现如下：</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208163147543.png" alt="image-20211208163147543" /><figcaption aria-hidden="true">image-20211208163147543</figcaption>
+</figure>
+<p>不难发现对组相连映射，当index长度为0时就是一个全相连，Tag长度为0时就是一个直接相连</p>
+<h4 id="替换算法">替换算法</h4>
+<p>常用的替换算法有一下几种：</p>
+<ul>
+<li>先进先出算法FIFO，字面意思，只需记录数据进入cache 的时间戳，开销小，但是没有考虑局部性，可能导致命中率低。</li>
+<li>最不经常使用算法LFU，对每行增加一个计数器，每行被访问一次计数器加一，最后淘汰计数器最小的值。其硬件成本较高，而且记录的是cache上电以后的历史访问次数综合，不能反映近期情况</li>
+<li>近期最少使用算法LRU，依然是对每行增加一个计数器，一旦本行被访问就将计数器置0，其余计数器加1，最终淘汰计数器数值最大的那个行。其看起来和LFU差不多，但是由于只记录近期，对组相联cache，以2路组相联为例，其只需要对每一组设置一个标志位表示自己是否是近期访问过的就行了，而LFU由于是统计历史信息，计数器跑不掉。</li>
+<li>随机替换算法，就随机选一行扔了，当cache容量比较大时还是很好用的，而且实现简单。</li>
+</ul>
+<h4 id="写入策略">写入策略</h4>
+<ul>
+<li>写回法：cache写命中时不立即写入主存，而是对脏数据进行标记，换出时脏数据再写入主存。会导致cache与主存数据不一致，但是减少了主存写入次数，效率高。</li>
+<li>写穿法：cache写命中后立即写入主存，此时不需要脏数据标记，但是写入主存频繁，效率低。单CPU环境下可以保证cache和主存内容一致，但是多CPU环境下不同CPU有各自的cache时依然无法保证。</li>
+</ul>
+<h4 id="cache应用">cache应用</h4>
+<p>cache刚出现时通常将指令和数据放在一起，称为<strong>统一cache</strong>，后续将数据与指令分开，于是有了<strong>分离cache</strong>，之后为了提高速度，又增加了<strong>多级cache</strong>。</p>
+<p>不仅是硬件，软件同样又cache，如操作系统磁盘缓存buffer，用于Web访问的Web cache，DNS缓存的DNS cache</p>
+<h3 id="虚拟存储器">虚拟存储器</h3>
+<p>cache解决的是提高访问速度的问题，为解决容量问题，人们提出了虚拟存储器的概念。</p>
+<p>虚拟存储器通过在主存和辅存之间增加部分软件（如操作系统）和必要的硬件（如地址映射和转换机构，缺页中断结构等）使辅存和主存构成一个有机的整体，为CPU提供一个大容量主存。其基本思路与cache原理类似，加载程序时并不直接将程序和代码载入主存，而仅在虚拟地址转换表中登记虚拟地址对应的磁盘地址。虚拟存储器中的地址分为虚拟地址，主存地址和辅存地址。</p>
+<p>本节主要讲页式虚拟存储器，在页式虚拟存储器中，虚拟空间和主存空间被分为大小相同的页，虚拟地址被分为虚拟页号（VPN）和虚拟页偏移（VPO），主存空间被分为物理页号（PPN）和物理页偏移（PPO）。显然VPN比PPN大，PPO和VPO大小相等，通过虚拟地址查找物理地址只需要知道VPN与PPN的对应关系，存放该对应关系的表称为页表。此外还有一些常见的缩写，如虚拟地址VA，物理地址PA，页表项PTE，页表项地址PTEA。通过以上叙述，一级页表虚拟地址转化为物理地址的过程如下，其中PTBR存放页表的首地址，类似数组首地址的作用。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208182140033.png" alt="image-20211208182140033" /></p>
+<p>由于页表一般很大，所以常采用多级页表的方式查询，但这样显然效率太低，所以设置了一个页表的缓存TLB，称为快表，其中存放着一些常用页表项。引入TLB后，VA转PA的方式变为如下图所示，即先查TLB，没有再查慢表。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208182434949.png" alt="image-20211208182434949" /></p>
+<p>之前说过虚拟存储器是将主存和辅存看作一个整体，上面的讨论还只是关于数据在主存中的情况，假设数据不在主存中，那么页表项中会有标记，则产生缺页异常，操作系统会将产生缺页异常的进程挂起，将辅存中有关的页调入主存，然后唤醒进程。</p>
+<p>综合cache，页式虚拟存储器，CPU访问一个地址的流程图如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208183254841.png" alt="image-20211208183254841" /></p>
+<h3 id="cache相关计算">cache相关计算</h3>
+<p>cache最重要的模式就是组相联模式，当cache中只有一个组时就是全相联，当每一行都是一个组时就是直接相连，所以基本上考题都是针对组相联来的。</p>
+<p>首先对组相联要搞清以下几个概念</p>
+<ul>
+<li>块，块是由多个基本寻址单元构成的（通常是字节，也有机器按字编址），与cache相关的映射都是以块为基本单位的，一行有一个块。所以拿到一个题首先求出主存的块数。</li>
+<li>组索引，有几个组决定了组索引的位数，这个是不需要写到cache里的，组索引的位数不需要和主存扯上关系，一个主存块的组索引是块号除以组数的余数。</li>
+<li>标志tag：在全相连中tag就是块号，在直接相连中tag是区号，在组相联中我们也可以将tag称为区号，就是我们的块号除以组号得到的商，这是要随着块数据一起写到cache里的。</li>
+<li>标志信息：最基本的标志信息是有效位，如果是写回策略还要有脏数据位，如果指定了淘汰策略还要指定淘汰位</li>
+<li>组内索引：除了让你画cache存储情况的时候几乎没有，也就是k-路组相联的k是不用在地址里体现出来的</li>
+</ul>
+<p>最重要的就是前面三个概念，记清楚了之后别的就应该没问题了。</p>
+<h2 id="第五章-指令系统">第五章 指令系统</h2>
+<p>指令系统是计算机软硬件的设计基础，一方面硬件设计者要根据指令系统进行硬件的逻辑设计，另一方面软件设计者要根据指令系统来建立计算机的软件系统。一个完善的指令系统应该满足完备性，规整性，有效性，兼容性和可扩展性等要求。</p>
+<h3 id="指令格式">指令格式</h3>
+<p>指令字长度是指一条指令中所包含的二进制位数。计算机指令系统根据指令字长是否固定可分为<strong>定长指令系统</strong>和<strong>变长指令系统</strong>。由于指令最终要存储在机器中，所以无论定长还是变长指令系统，指令字长都应该是字节的整数倍，根据指令字长和机器字长的关系，一般会分为半字长，单字长和多字长。</p>
+<p>指令格式是二进制代码表示指令的结构形式，其一般由<strong>操作码</strong>和<strong>地址码</strong>组成。操作码指明指令是干啥的，地址码指明指令作用的对象。</p>
+<p>地址码字段的作用随指令类型和寻址方式不同而不同，可能是操作数，也可能是操作时所在的主存地址、寄存器编号或外部设备端口的地址等。根据一条指令中所含操作数地址的数量，可将指令分为三地址指令，双地址指令和单地址指令</p>
+<p>根据操作码是否可变，可以将指令分为定长操作码指令和变长操作码指令。其中变长操作码指令用扩展操作码技术来实现，但需要注意的是长操作码的前几位不能与短操作码前几位重复。</p>
+<h3 id="寻址方式">寻址方式</h3>
+<p>寻址方式分为指令寻址方式和操作数寻址方式。</p>
+<p>指令寻址方式就是指令的运行方式，计算机中的指令一般顺序存储，所以一般采用顺序寻址方式，当有跳转指令时则使用跳跃寻址方式。</p>
+<p>操作数寻址方式就是在汇编中学习的那几种，指明了指令解释地址码的方式。为了更好描述寻址方式，设地址字段为D，操作数为S，括号表示括号内数据地址或者对应寄存器编号的寄存器上存放的值，如(D)表示内存中地址为D的存储单元中的值，R[D]表示D号寄存器中的值。</p>
+<ul>
+<li>立即寻址：地址码是立即数，S=D</li>
+<li>直接寻址：地址码是操作数在内存中的地址，S=(D)</li>
+<li>寄存器寻址：地址码是寄存器编号，S=R[D]</li>
+<li>间接寻址：地址码是操作数地址的地址，S=((D))</li>
+<li>寄存器间接寻址：就是间接寻址，操作数的地址码为地址码指定的寄存器中的值,S=R[D]</li>
+<li>相对寻址：程序计数器PC的内容加上D就是操作数的有效地址。记住PC是当前指令的下一条指令的地址。S=(PC+D)</li>
+<li>变址寻址：一般有两个地址码，一个是寄存器X，一个是立即数，S=(R[x]+D)，D称为基址，X中存放编制</li>
+<li>基址寻址：和变址寻址操作一样，只不过概念上寄存器中的是基址</li>
+<li>堆栈寻址：寻找存放在堆栈中操作数地址的方法称为堆栈寻址。堆栈有存储器堆栈和寄存器堆栈两种。</li>
+</ul>
+<h3 id="指令设计">指令设计</h3>
+<p>指令设计首选要选择确定的编码格式，格式有以下几种</p>
+<ul>
+<li>定长指令格式：定长指令格式结构规整，有利于简化硬件，但平均长度长，不易扩展</li>
+<li>变长指令格式：变长指令格式结构灵活指令码点冗余少，但是格式不规整，控制方式较为复杂</li>
+<li>混合编码指令格式：定长和变长的综合，提供若干长度固定的指令字。</li>
+</ul>
+<p>确定编码格式后，剩下的就是为操作码、寻址方式、地址码等分配适当的长度，另外就是当操作码采用扩展操作码时长码的前几位不能和短码一样。</p>
+<h3 id="cisc和risc">CISC和RISC</h3>
+<p>CISC指复杂指令系统，RISC指精简指令系统。</p>
+<p>复杂指令系统一般指令条数多，寻址方式和指令格式多，且指令字长不固定，一般也不对访存做要求，各指令只需时间相差很大，大多采用微程序控制器。如Intel X86，IA64指令系统</p>
+<p>精简指令系统尽量避免使用复杂指令，优先选择使用频率高的指令，寻址方式和指令格式一般也比较简单，指令长度固定，一般会限制对主存的访问，采用硬布线控制器实现。如ARM，MIPS，RISC-V</p>
+<h2 id="第六章-中央处理器">第六章 中央处理器</h2>
+<h3 id="概述">概述</h3>
+<p>CPU的主要工作是取指令和执行指令，一个CPU应具有以下功能：</p>
+<ul>
+<li>程序控制：控制指令执行顺序</li>
+<li>操作控制：产生指令执行过程中需要的操作控制信号</li>
+<li>时序控制：对操作控制信号进行定时</li>
+<li>数据加工：利用ALU对数据进行处理以及控制数据的传递</li>
+<li>中断处理：对内部异常和外部中断请求进行响应</li>
+</ul>
+<p>在冯诺依曼体系结构中，CPU由运算器和控制器组成。从硬件的角度看，CPU由一系列寄存器，ALU和操作控制器组成，如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209101554544.png" alt="image-20211209101554544" /></p>
+<p>上图中的程序计数器保存将<strong>要执行的指令的字节地址</strong>，地址寄存器和数据寄存器就是存放地址和数据的，这俩都不是必须的，因为下面有通用寄存器，通用寄存器就是在汇编语言中可以使用的寄存器。指令寄存器存放指令，指令经过译码器送入操作控制器产生控制信号序列，或者通过地址码读出数据。</p>
+<p>根据上面的图，现在要实现一个CPU要解决的就是两个问题，一是数据如何传送，而是操作控制器如何实现。对于前者，我们有<strong>单总线数据通路</strong>和<strong>专用通路结构数据通路</strong>，对于第二个问题，我们有<strong>硬布线控制器</strong>和<strong>微程序控制器</strong>。</p>
+<p>为方便讨论，本章将cache视为透明部件，即CPU直接向内存读写数据。</p>
+<h3 id="指令周期">指令周期</h3>
+<p>数据的传送很好说，直接把一个数据送到寄存器或者ALU即可，我们只在乎传输的结果。而对于指令，我们在CPU里不需要指令的值，而需要指令代表的<strong>一系列操作信号序列</strong>，如何安排这些操作信号的持续时间和产生序列称为时序同步。这与指令周期的概念有关。</p>
+<p>通常将一条指令从取出到执行完成的时间称为<strong>指令周期</strong>。指令有那么多条，为了探寻更一般的规律，将一个指令周期分为多个<strong>机器周期</strong>（又称为CPU周期）研究。例如可以将一个指令周期分为以下四个机器周期：取指周期（取出指令），译码/取操作数周期（通过指令取出操作数），执行周期（向ALU传输数据以及操作信号序列），写回周期（将结果写回寄存器或主存）。后面在讨论具体指令时还会划分为不同的机器周期。通常将从主存中取出一个存储字所需的最短时间定义为一个机器周期（我也不晓得为啥，书上抄的凑活看吧）。一个机器周期中有多个时钟周期。有了上述划分，我们可以按照机器周期将指令分拆为几个大部分，这几个大部分按序执行。机器周期内同样按序产生时钟电平信号以安排一个时钟周期内的信号产生。</p>
+<p>注意虽然可以对一个指令系统的指令周期划分为几个机器周期，但是一般这种划分是不会适用于所有的指令的，可能有的指令没有某个机器周期。同时不同指令的相同机器周期包含的时钟周期不一定一样。如果我们按照这种切合实际的情况，即不同指令机器周期数不同，不同指令的同一时钟周期数不同，则称为<strong>变长指令周期</strong>。当然我们为了设计简单也可以强行安排所有指令有相同的机器周期数，所有机器周期数有相同的时钟周期数，这样的话对某些指令会有空转的时间，但是设计简单，称为<strong>定长指令周期</strong>。</p>
+<p>当然划分机器周期时说是为了探寻一般规律，其实是为了简化设计，当我们能够设计复杂的结构时，就不需要机器周期的概念了（其实变长指令周期系统中机器周期已经显得不重要了），就按照指令需要的时钟周期进行时序同步就好，这称为<strong>现代时序系统</strong>。</p>
+<h3 id="数据通路及指令操作流程">数据通路及指令操作流程</h3>
+<p>数据在各功能部件之间传送的路径称为<strong>数据通路</strong>。首先讨论数据通路的基本模型，如下图所示<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209111139761.png" alt="image-20211209111139761" /></p>
+<p>即从一个寄存器到另一个寄存器，中间经过组合逻辑（或者根本没有组合逻辑只是一条线）。这对这个图有一个定时的问题需要讨论，假设两个寄存器上跳沿有效，寄存器从时钟上跳沿到数据输出稳定的时间称为寄存器延迟<span class="math inline">\(t_{clk\_to\_q}\)</span>，数据处理单元对寄存器的输出数据进行加工处理有一个关键路径延迟（即最长路径延迟）<span class="math inline">\(T_{max}\)</span>，寄存器输入端在下一个时钟上跳沿到来之前数据稳定的时间称为寄存器建立时间<span class="math inline">\(T_{set\_up}\)</span>，时钟上跳沿到来之后输入数据还需要一个稳定时间<span class="math inline">\(T_{hold}\)</span>。注意上面几个定义是输入还是输出端口的数据。</p>
+<p>为了数据能够稳定传输，要求数据通路的最小时钟周期（寄存器连接的时钟周期）必须大于<span class="math inline">\(T_{clk\_to\_q} + T_{max}+T_{set\_up}\)</span>。否则一定有一个地方的数据无法正确保持。假设组合逻辑的最短路径延迟为<span class="math inline">\(T_{min}\)</span>，同时还要求<span class="math inline">\(T_{hold} \lt T_{clk\_to\_q} + T_{min}\)</span>。</p>
+<p>一种最简单的数据通路结构为单总线结构的数据通路。单总线结构的数据通路的CPU中有一条内总线连接了运算器、控制器、寄存器堆等核心部件，还有外总线连接CPU，内存和I/O设备。一个mips单总线CPU结构如图所示<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209113916424.png" alt="image-20211209113916424" /></p>
+<p>控制流就是控制信号，其中下边标n表示写使能端口，下标out表示读使能端口，都是从总线中读，向总线中写（一般是内总线，访存指令可能向外总线），难以理解的信号有IR寄存器的IR(A)<sub>out</sub>和IR(B)<sub>out</sub>，前者代表向总线中输出指令中的地址，后者代表向总线中输出指令中的立即数。显然单总线数据通路完成一条指令需要多个时钟周期。下面以五条mips指令说明该CPU的运行原理。五条mips指令的说明如下</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209113751151.png" alt="image-20211209113751151" /><figcaption aria-hidden="true">image-20211209113751151</figcaption>
+</figure>
+<p>对着上面的图，可以分析出这五条指令需要几个时钟周期，每个时钟周期需要进行哪些。先按照三级时序，将指令分为取值周期（取指令），计算周期（主要是计算地址），执行周期（计算数据，写入相应寄存器或内存），中断周期，每一个方框表示一个时钟周期，如下图：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209114747944.png" alt="image-20211209114747944" /></p>
+<p>根据这个图，可以写出每一个时钟周期需要的信号，比如取值周期第一个时钟周期需要PC<sub>out</sub>，X<sub>in</sub>和AR<sub>in</sub>。</p>
+<p>还有一种数据通路结构称为专用通路数据结构，即各部件之间采用专用数据通路连接而不使用总线。<sub>因为不考所以懒得看</sub></p>
+<p><strong>后面的所有讨论都基于单总线数据通路结构，且都基于上面给出的五条指令，且暂时不考虑中断周期，即执行周期之后直接回取值周期第一个节拍</strong></p>
+<h3 id="时序与控制">时序与控制</h3>
+<p>在指令周期中已经对时序的问题做了一个基本的讨论。下面更深入讨论时序，明确脉冲信号和电平信号的对应关系和时序。</p>
+<p>之前提到过指令周期，机器周期和时钟周期的概念，早期计算机采用状态周期，节拍电位，和节拍脉冲三级时序体系来对控制信号进行定时控制。</p>
+<p>状态周期用来表示执行到哪个机器周期，以上面的MIPS CPU为例，绿色的取值周期属于一个状态周期，黄色的计算周期属于一个状态周期，蓝色的执行周期属于一个状态周期，在一个状态周期内周期电位应该保持为高电位。</p>
+<p>节拍电位用电位表示当前处于第几个节拍，如上图每一个框为一个节拍，一个节拍内节拍电位是高电平。</p>
+<p>节拍脉冲就是时钟信号，一般一个节拍电位持续时间为一个时钟周期，周期中间上跳沿是CPU中寄存器锁存值的时刻，而下跳沿改变节拍。以上面的MIPS指令为例，定长指令周期三级时序图如下。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209152919630.png" alt="image-20211209152919630" /></p>
+<p>对一些指令，如add和addi，可能会有空转的周期，而且取指周期和计算周期的节拍数不一样，也会有空转的节拍。但是这样设计有一个好处，就是我只需要通过时钟信号，按规律无脑调制这些电位出来就行了，比如取值周期高电位持续四个时钟周期，然后回低电位八个时钟周期，然后再到高电位四个时钟周期，按这样的思路生成上面7个电位，然后这些电位和译码指令信号经过一个组合逻辑就可以生成一个节拍内的控制信号。当然我们也可以把一个状态周期的一个节拍视为一个状态，看成一个十二个状态的有限状态机，这个思路可以启发我们设计现代时序电路。</p>
+<p>一个比较灵活的变长指令周期三级时序图如下：</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209153054318.png" alt="image-20211209153054318" /><figcaption aria-hidden="true">image-20211209153054318</figcaption>
+</figure>
+<p>这样没有了空转的时钟周期，但是我们无法简单通过时序调制生成信号了，必须通过状态机的思想。下面着重介绍状态机的思想。针对那五个MIPS指令，定长指令周期状态机如下图所示<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154231667.png" alt="image-20211209154231667" /></p>
+<p>空白表示空转的周期，显然这是一个无条件转换的FSM，现态和次态都非常清楚。不过要同一状态在哪个沿跳变，一般设为在下跳沿改变状态。变长指令周期的FSM如下图：</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154505746.png" alt="image-20211209154505746" /><figcaption aria-hidden="true">image-20211209154505746</figcaption>
+</figure>
+<p>这里就有状态的条件转化了，现态得根据输入的指令不同转变状态。这就启发了我们既然要根据状态指令的不同决定次态，那么大家为什么还要在一个锅里吃饭？所以就有下面的现代时序状态机<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154725658.png" alt="image-20211209154725658" /></p>
+<p>不难发现这和上面哪个方框图是一一对应的，每个状态直对应一组操作信号，而不必像三级时序中先得到状态周期然后在去进行组合逻辑。即三级时序状态机中的状态只包含电位信息，而现代时序状态机中的状态是操作信号。</p>
+<h3 id="硬布线控制器">硬布线控制器</h3>
+<p>硬布线控制器又称组合逻辑控制器，直接由各种逻辑门电路和除法器构成。前面的讨论其实也是基于硬布线控制器思想的，即状态信息通过组合逻辑生成控制信号。</p>
+<p>三级时序硬布线控制器的思想就是上面所说的，其模型如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155405222.png" alt="image-20211209155405222" /></p>
+<p>时序发生器只管产生三级时序电位，产生的电位送到组合逻辑单元和译码信号生成操作信号，所谓指令译码信号就是根据指令编码给出某一位信号，假设只考虑咱那五条指令，译码器右端就应该有五个输出分别代表五个信号，假设没有信号为低电位，指令译码的功能就是根据编码在某个指令对应的输出端口输出高电位。</p>
+<p>当然时序发生器可以采用状态机设计，一般时序发生器的结构如下：</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155557793.png" alt="image-20211209155557793" /><figcaption aria-hidden="true">image-20211209155557793</figcaption>
+</figure>
+<p>而现代时序硬布线控制器直接通过状态得到操作信号，结构如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155701938.png" alt="image-20211209155701938" /></p>
+<h3 id="微程序控制器">微程序控制器</h3>
+<p>微程序控制器的基本思想是仿照程序设计的基本方法，将实现指令系统中所有指令功能所需要的控制信号按照一定的规则编码为微指令，将其放在一个ROM中，执行指令时按序执行微指令即可，执行微指令则直接给出微指令包含的控制信号。</p>
+<p>控制部件向执行部件发出各种控制命令称为微命令，部件收到微命令进行的操作称为位操作，其中有的微操作可以在一个周期内执行，称为相容性微操作，有的则不行，比如内存的读信号和写信号，同时向总线输出的信号，ALU上的信号，称为互斥性微指令。显然一条微指令中只能出现相容的微命令。</p>
+<p>常见的一种微指令格式如下：</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209161002844.png" alt="image-20211209161002844" /><figcaption aria-hidden="true">image-20211209161002844</figcaption>
+</figure>
+<p>不难发现这其实就是硬布线中一种状态对应的输出信号后面的顺序控制字段。顺序控制字段中，下址字段给出下一条指令的地址，P0和P1指出执行过程中需要测试的外部条件，P<sub>IR</sub>为1时判断是否到达了取指阶段的最后一条命令，应根据不同的指令译码信号跳转到微程序地址。P<sub>equal</sub>是对于beq指令，比较equal信号是否为1，是则跳转到指定执行位置（注意是程序跳转到执行位置，不是微程序），不是则回取值周期第一个节拍，beq的下址字段一般为0（其实是书上和实验上都是0），所以beq指令在equal信号为0（即不相等）时执行下址字段地址，否则继续执行后面的微程序。微指令在存储器的存储方式一般是像下面这样的，一般一条微指令的操作控制字段正好对应上面硬布线讨论过的一个状态的输出信号。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209162414822.png" alt="image-20211209162414822" /><figcaption aria-hidden="true">image-20211209162414822</figcaption>
+</figure>
+<p>可见微程序大部分时候都顺序执行，所以下址字段显得很没必要，完全可以改为一位，表示是否执行到最后一条微指令，不是则微指令地址加1，是则回取指指令第一条。</p>
+<blockquote>
+<p>这里beq指令比较反直觉，由于前面的规定，beq在对equal进行判断时，其下址应该是0，即下址不是顺序地址，但是按照之前的规定equal为0时要执行下址字段，由于下址不是顺序地址，要对beq的下址计算坐单独处理。当然更优雅的做法是让beq在equal为0时执行本条微指令地址加1的地址，否则回到0。<sub>可惜实验不是这样的</sub></p>
+</blockquote>
+<p>用下址字段表示下一条微指令地址的下址字段法，用本次地址加1生成下一条微指令的方法称为计数器法。两种方式的控制器如下图所示，第一个是下址字段法，第二个是计数器法。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209163804769.png" alt="image-20211209163804769" /></p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209163825617.png" alt="image-20211209163825617" /><figcaption aria-hidden="true">image-20211209163825617</figcaption>
+</figure>
+<p>上面的微指令的编码称为直接表示法，实际上我们可以对直接表示法得到的微指令编码进行缩短，比如将互斥的微指令放在一组进行编号，对编号使用译码器得到具体的操作信号。这种方法成为字段译码法，虽然缩短了微程序的长度，但是加入译码器之后显然会降低执行效率。当然也可以将直接表示法和编码表示法混合使用。</p>
+<p>直接表示法和字段译码法表示的微指令称为水平型微指令，能在一个微指令周期内给出多个微命令。还有一种微指令称为垂直型微指令，其将微命令代码化，给机器指令又编了个指令集，纯纯的牛马，不学也罢。</p>
+<h3 id="异常与中断处理">异常与中断处理</h3>
+<p><sub>说起来是不考的，但是第九章又有，反正实验要做，干脆总结一下</sub></p>
+<p>异常：通常是CPU内部引起的异常事件，也称内部中断或软件中断，可进一步分为故障（由指令执行引起的异常），自陷（Trap，主动调用的异常，用于系统调用），终止（硬件故障，大概率要寄，只能重启）</p>
+<p>外部中断：指外部设备向CPU发送的中断请求，如I/O中断</p>
+<p>异常与中断的处理过程基本一致，后文统一称为中断。基本过程为先关中断禁止中断请求（中断响应式原子操作，不可被打断），然后保存当前程序执行断点，然后识别中断，转到中断响应程序，处理完中断之后恢复中断发生之前的现场，开中断继续接收中断请求。流程图如下。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209165910181.png" alt="image-20211209165910181" /></p>
+<p>要让CPU支持中断处理，首先咱得有中断表示位，然后呢根据老早之前那张状态周期划分图（不放这里来是因为马上有新图辣）中断的判断应该在一条指令执行完后，所以要在指令执行完后判断有无中断，在有中断之后加入处理中断的状态。处理中断时得保存断点地址，这里要用总线，然后还要把中断处理程序地址送PC，又要用总线。中断程序和普通程序就一样了，套用之前的FSM就行，但是最后要返回断点，把断点地址送回PC，就要多一个指令。总计多三个状态，现代时序FSM如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209170633573.png" alt="image-20211209170633573" /></p>
+<p>硬件方面要加一个中断识别装置，识别内部中断和外部中断，产生中断请求和中断号，根据中断号送中断程序地址到PC。加上这些装置后，CPU结构如下图。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209170847302.png" alt="image-20211209170847302" /></p>
+<p><sub>七八章不考，没细看</sub></p>
+<h2 id="第九章-输入输出系统">第九章 输入输出系统</h2>
+<h3 id="输入输出设备的特性">输入输出设备的特性</h3>
+<p>输入输出设备是计算机与人或者机器系统进行数据交互的装置，用于实现计算机内部二进制信息与外部不同形式信息的转换，简称外部设备或外设。其有以下特性：</p>
+<ul>
+<li>异步性：与CPU异步运行</li>
+<li>实时性：为了用户体验，输入输出设备要求实时响应</li>
+<li>独立性：不同外部设备发送和接收数据的方法不同，数据格式也不同，需要在接口上标准化</li>
+</ul>
+<p>外部设备、接口部件、总线以及相应的管理软件统称为计算机的输入/输出系统，简称I/O系统</p>
+<h3 id="io接口">I/O接口</h3>
+<p>I/O接口是连接总线与I/O设备的物理和逻辑界面，既包括物理连接电路，也包括软件逻辑接口，是总线与I/O设备交换数据的通道。接口硬件基本结构如下，其中数据缓冲寄存器是用于缓冲数据以匹配CPU和外部设备的速度差异的，状态寄存器标识外设状态，存储器不是必须的，用于设备自身的运算和处理<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209195555666.png" alt="image-20211209195555666" /></p>
+<p>I/O设备同样需要编址以备CPU访问，常用的编制方式有和内存统一编址以及独立编址。对于前者，I/O设备和内存处于同一地址空间，可以用统一的访存指令访问设备，对于后者需要用特殊的方寸指令访问设备。</p>
+<p>现代计算机中用户无法直接通过软件访问I/O设备，需要通过操作系统间接访问，如使用与OS无关的I/O库如C语言的标准输入输出库，或者调用操作系统提供的内核态下的函数接口，或者通过独立的设备驱动程序。</p>
+<h3 id="数据传输控制方式">数据传输控制方式</h3>
+<p>有以下几种</p>
+<ul>
+<li>程序控制方式：依靠CPU执行程序查询设备是否就绪，之后进行数据传输。</li>
+<li>程序中断控制方式：CPU启动外部设备后不再查询，而是由操作系统将有I/O请求的程序挂起，CPU继续执行其他程序，等待设备就绪，设备就绪后会发送中断请求，CPU接收到中断请求后会调用中断服务程序，中断服务程序唤醒等待进程完成I/O操作。操作完成后返回中断发生点。</li>
+<li>直接存储器访问（DMA）：前面几种方式都是由CPU读入I/O设备数据，而很多时候数据是要放到内存里的，所以人们设计DMA，通过DMA暂时接管总线，由DMA负责数据再I/O设备与内存之间的传输。</li>
+<li>通道方式、外围处理机方式：不考，没看</li>
+</ul>
+<h3 id="程序控制方式">程序控制方式</h3>
+<p>基本思想上面已经说的很清楚了，数据传输由CPU主导，CPU会不同问设备准备好了吗，对于简单设备准备好就可以开始传数据了，而对于复杂设备可能要先握一次手，即先查询就绪状态，然后确定参数，之后再查询一次状态进行数据传输。</p>
+<p>查询有两种方式，一是忙等待，就是查询就一直问，问到I/O设备答应为止，有点蠢说实话。还有一种是定时查询，一次问不成功就等会再问，等的时间很重要，要好好选择。</p>
+<h3 id="程序中断控制方式">程序中断控制方式</h3>
+<p>基本思想也是上面说的，数据传输某种意义上来说由设备主导。设备知道CPU要用的时候开始准备自己，设备准备自己的时候CPU该干嘛干嘛，设备准备好了发送中断之后CPU就去响应中断（保证I/O操作实时性）。</p>
+<p>这种操作效率要高一些，而且实时性强，但是中断是要开销的，当传输数据的时间小于中断开销的时候就很划不来，这个时候可能定时查询还快一点。</p>
+<p>关于这部分内容比较重要的是中断的一些知识。下面进行叙述</p>
+<h4 id="中断基本概念">中断基本概念</h4>
+<p>中断是指CPU暂时中止现行程序的执行，转去执行为某个<strong>随机事件</strong>服务的中断处理子程序，处理完后自动恢复原程序的执行。中断技术赋于计算机应变能力，将有序的运行和无序的事件统一起来，大大增强了系统的处理能力。关于中断的基本类型第六章已经有了一些叙述，下面是一个分类图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209202606376.png" alt="image-20211209202606376" /></p>
+<p>前面对CPU的中断处理时，已经可以看到中断是在每条指令执行完后判断的，不过在之前的讨论中只讨论了<strong>单级中断</strong>，在执行中断服务程序时不再响应其他中断请求。实际上有些中断执行过程中是运行其他中断的，即<strong>多重中断</strong>。要实现多级中断，显然开关中断不能像第六章那样处理，而应该在保存好现场之后就打开中断。如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209223744854.png" alt="image-20211209223744854" /></p>
+<p>当多设备同时产生中断时，CPU先响应<strong>优先级</strong>高的中断，CPU优先级随不同中断服务程序而改变。前面提到的多重中断中，只有优先级高的中断可以打断优先级低的中断服务程序。中断优先级可以通过优先编码器实现。</p>
+<p>当然中断优先级不会是一成不变的，CPU使用<strong>中断屏蔽</strong>计算动态改变处理优先级。中断屏蔽使用中断屏蔽寄存器使用，中断寄存器中每一位对应一个中断源，位为1标识屏蔽中断，为0标识允许中断。中断信号与其中断屏蔽字的反码逻辑与输入优先编码器实现中断屏蔽和设定优先级。</p>
+<h4 id="中断请求">中断请求</h4>
+<p>中断信号要提交给CPU有以下方式</p>
+<ul>
+<li>独立请求方式：每个中断源有一个单独的中断请求线缆（INTR）和中断应答线缆（INTA）</li>
+<li>链式请求：多个中断源公用一根INTR，发送中断请求，中断应答链式向后传递，正确收到中断应答的中断源会阻断INTA向后传递</li>
+<li>中断控制器：就是实验实现的内玩意儿。中断控制器分担了CPU中断控制功能，进行中断优先级仲裁和中断识别，然后将识别结果送到CPU</li>
+<li>分组链式：就是独立请求后面接上分组链式</li>
+</ul>
+<p>中断请求需要几个硬件支持，一个是中断请求寄存器，其中的每一位代表一个外部设备中断请求，值为1时表示有中断请求；第二个是前面说过的中断屏蔽寄存器；第三个时中断服务寄存器用以存放正在被服务的中断请求；第四个是中断优先级排队电路，就是个优先编码器；最后是中断允许触发器，用来开关中断。</p>
+<h4 id="中断响应">中断响应</h4>
+<p>就是前面那个流程图。总结一下，要响应这个中断，首先中断服务是开的，中断未被屏蔽且中断优先级最高，则可以在一条指令执行完后开始中断响应。中断响应过程总结就是保存现场，进入中断处理程序，恢复现场</p>
+<h4 id="中断识别">中断识别</h4>
+<p>中断识别的任务是确定中断由哪个中断源发出，然后识别出中断源后还需要获取中断服务程序的入口地址。</p>
+<p>分为非向量中断和向量中断。非向量中断只有一个公共的中断服务程序。向量中断中每个设备的中断源都有唯一的中断编号与之对应，称为中断号。下面主要讨论向量中断。</p>
+<p>在向量中断中，CPU通过中断号，在中断向量表中查找对应中断向量，中断向量就是中断服务程序的入口地址和程序状态字。</p>
+<blockquote>
+<p>在8086中，中断向量表占用主存0000H到03FFH共1K字节，256个中断号对应256项，一项4字节，高2位为短地址，低2位为段内偏移地址。中断号为n的中断服务程序入口地址在地址为n*4的四个字节中，将地址为n*4的字（两个字节十六位）放入IP，n*4+2放入段地址寄存器CS中。（汇编警告）</p>
+</blockquote>
+<h3 id="dma方式">DMA方式</h3>
+<p>DMA是为了减少I/O过程中CPU用于实际传输的开销而引入的，该方式在总线上设置了DMA控制电路（DMAC），DMAC临时接管总线代替CPU控制外部设备和内存之间的数据交换。</p>
+<p>使用DMA后，自然有DMA和CPU争用内存的情况。虽然有cache在能够减轻这种情况，但还是要考虑。这个问题抽象以下就相当于CPU在DMA占用内存时无法工作，就有点像DRAM刷新时CPU无法访存一样，所以有三种方式（再放送）</p>
+<ul>
+<li>DMA工作就不让CPU访问主存，相当于DRAM集中刷新。</li>
+<li>DMA和CPU交替使用主存，相当于DRAM读一次刷新一次。但是这种情况下有一个好处就是两者在各自的时间做各自的事，DMA甚至不需要申请总线。</li>
+<li>周期挪用，在DMAC需要内存的时候就给一个周期或多个周期，很抠，但是如果这个周期内CPU恰好不需要主存，那么刚好不会影响CPU，否则CPU停一个周期。又称为周期窃取（DMCA偷了一个周期）</li>
+</ul>
+<p>最后比较中断和DMA的区别</p>
+<ul>
+<li>中断通过程序传送数据，DMA靠硬件来实现</li>
+<li>中断时机为两指令之间，DMA的响应时机为两存储周期之间</li>
+<li>中断能处理异常事件，DMA只能进行数据传送</li>
+<li>DMA仅挪用了一个存储周期，不改变CPU现场</li>
+<li>DMA优先级高，CPU都干不过</li>
+<li>DMA利用了中断技术。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag"># 课程笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E9%80%9A%E4%BF%A1/" rel="prev" title="计算机网络与通信">
+                  <i class="fa fa-chevron-left"></i> 计算机网络与通信
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/13/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%E7%AE%80%E6%9E%90/" rel="next" title="组成原理实验">
+                  组成原理实验 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zz12138zz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+<script>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+
+
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+</body>
+</html>
