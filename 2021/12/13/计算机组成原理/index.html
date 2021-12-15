@@ -97,7 +97,7 @@
 <meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209202606376.png">
 <meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209223744854.png">
 <meta property="article:published_time" content="2021-12-13T09:12:56.000Z">
-<meta property="article:modified_time" content="2021-12-13T12:42:29.926Z">
+<meta property="article:modified_time" content="2021-12-15T08:25:48.081Z">
 <meta property="article:author" content="zz12138zz">
 <meta property="article:tag" content="计算机组成原理">
 <meta property="article:tag" content="课程笔记">
@@ -325,10 +325,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-12-13 17:12:56 / 修改时间：20:42:29" itemprop="dateCreated datePublished" datetime="2021-12-13T17:12:56+08:00">2021-12-13</time>
+      <time title="创建时间：2021-12-13 17:12:56" itemprop="dateCreated datePublished" datetime="2021-12-13T17:12:56+08:00">2021-12-13</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-15 16:25:48" itemprop="dateModified" datetime="2021-12-15T16:25:48+08:00">2021-12-15</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -383,16 +389,14 @@
 </ul>
 <h2 id="第二章-计算机数据表示">第二章 计算机数据表示</h2>
 <p>计算机内部流动的信息可以分为两大类：一类事数据信息，一类是控制信息。数据信息的表示直接影响运算器的设计。</p>
-<p>计算机中的数据信息用二进制表示，常见的2的幂如下</p>
-<p><span class="math display">\[2^5=32\qquad2^6=64\qquad2^7=128\qquad2^8=256\qquad2^9=512\qquad2^{10}=1024\qquad2^{16}=65536\qquad2^{31}=2147483648\]</span></p>
+<p>计算机中的数据信息用二进制表示。在后面的计算中常涉及到多大的存储空间对应多少位地址线，其实就是地址空间和2的几次幂对应的问题，只需要记住1K等于十根地址线，<span class="math inline">\(2^n K\)</span>的地址空间（注意看清按什么编址）需要10+n根地址线</p>
 <h3 id="数的机器码表示">数的机器码表示</h3>
 <p>真值：将用“+”、“-” 表示正负的二进制数称为真值，书写用，不是机器码</p>
 <p>原码：增加一位符号位，符号位为1表示负，0表示正，有两个机器0（正0和负0），加减运算不统一</p>
 <p>反码：原码基础上，符号位不变，负数按位各位取反，有两个机器0，加减运算统一为加法，但是相加时需要将符号位进位加到最低有效位上。</p>
 <p>补码：反码基础上，负数加一。利用了求模运算，将加减法统一为加法，只有一个机器0.</p>
 <blockquote>
-<p>两整数<span class="math inline">\(a\)</span>和<span class="math inline">\(b\)</span>，若用整数<span class="math inline">\(m\)</span>去除，如余数相同，就称<span class="math inline">\(a,b\)</span>对<span class="math inline">\(m\)</span>同余,记作：$ a b(modm)<span class="math inline">\(。若一个运算系统中只有小于一个数\)</span>m<span class="math inline">\(的数参与运算，所有大于\)</span>m<span class="math inline">\(的数对\)</span>m<span class="math inline">\(进行求模运算后在参加运算，则运算为有模运算。有模运算中，设\)</span>m<span class="math inline">\(为模，则\)</span>a-b a+(m-b) (mod m)<span class="math inline">\(，可将\)</span>-b<span class="math inline">\(换为\)</span>m-b<span class="math inline">\(，称为\)</span>-b$的补码</p>
-<p>由于在计算机中二进制数据有字长的显示，所以数据最高位的进位的按权值就是模数，运算结果超过模数的部分会舍去，所以计算机中二进制运算是有模运算。二进制数求负数的补码很简单。</p>
+<p>两整数a和b，用整数m去除，如余数相同，就称a,b对m同余,记作： <span class="math inline">\(a \equiv b(mod\quad m)\)</span>。 若一个运算系统中只有小于一个数m的数参与运算，所有大于m的数对m进行求模运算后在参&gt;加运算，则运算为有模运算。 有模运算中，设m为模，则<span class="math inline">\(a-b \equiv a+(m-b) \quad (mod\quad m)\)</span>，可将-b换为m-b，称为-b的补码 由于在计算机中二进制数据有字长的显示，所以数据最高位的进位的按权值就是模数，运算结果超过模数的部分会舍去，所以计算机中二进制运算是有模运算。二进制数求负数的补码很简单</p>
 </blockquote>
 <p>不同位数的补码向加减时需要将位数较短的数的符号位扩展。</p>
 <p>移码：真值加上一个偏移量后在表示为机器数称为移码，只在浮点数的阶码中使用，把指数加上偏移量全部变为正数方便表示。</p>
@@ -493,18 +497,18 @@
 <p>还可以利用逻辑表达式直接计算出一些位的进位，从而设计并行进位加法器，也成为先行进位加法器，即通过组合逻辑直接从输入获得进位而不需要等待上一位全加器产生的进位，可以增加计算速度但是会使电路变复杂，因此一般四位一组进行先行进位。</p>
 <p>观察一位全加器，发现进位可以写为<span class="math inline">\(C_{i+1}=G_i+P_iC_i\)</span>的形式，而<span class="math inline">\(G_i\)</span>，<span class="math inline">\(P_i\)</span>可以推导出来，于是可以设计四位与门异或门电路产生<span class="math inline">\(G_i\)</span>和<span class="math inline">\(P_i\)</span>，先行进位电路产生进位，如下图所示</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112308494.png" alt="image-20211006112308494" /><figcaption aria-hidden="true">image-20211006112308494</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112308494.png" alt="G,P产生电路" /><figcaption aria-hidden="true">G,P产生电路</figcaption>
 </figure>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112327324.png" alt="image-20211006112327324" /><figcaption aria-hidden="true">image-20211006112327324</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112327324.png" alt="先行进位电路" /><figcaption aria-hidden="true">先行进位电路</figcaption>
 </figure>
 <p>从而实现四位先行进位加法器</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112539555.png" alt="image-20211006112539555" /><figcaption aria-hidden="true">image-20211006112539555</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006112539555.png" alt="四位先行加法器" /><figcaption aria-hidden="true">四位先行加法器</figcaption>
 </figure>
 <p>四位并行进位ALU串联可以构成更高位的ALU，同样我们可以通过分析逻辑表达式，发现 <span class="math inline">\(C_4\)</span>同样可以表示为形如<span class="math inline">\(C_4=G+PC_0\)</span>的式子，所以我们可以打破串行进位实现先行进位，即设计一个类似单个四位先行ALU中的四位先行进位电路的四位之间成组进位电路，其需要输入初始进位<span class="math inline">\(C_0\)</span>以及每个四位加法器产生的<span class="math inline">\(G\)</span>和<span class="math inline">\(P\)</span>。称为成组进位传递函数以及成组进位生成函数如下图所示。</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006113740225.png" alt="image-20211006113740225" /><figcaption aria-hidden="true">image-20211006113740225</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006113740225.png" alt="十六位先行进位加法器" /><figcaption aria-hidden="true">十六位先行进位加法器</figcaption>
 </figure>
 <p>以此类推，当构建更大的并行进位电路时，我们还可以增加再一层先行进位电路</p>
 <h3 id="定点乘法运算">定点乘法运算</h3>
@@ -512,42 +516,42 @@
 <h4 id="原码一位乘法">原码一位乘法</h4>
 <p>参照手工列竖式计算时将一个乘数与另一个乘数的每一位相乘再左移相加的思想，设计将一个乘数与另一个乘数每一位相乘得到部分积后右移一位，移出的位保存到另一个乘数寄存器中，再将移动后的部分积与新的部分积相加，重复操作，当右移位数等于另一个乘数的数值位的位数时运算结束，得到的最终部分积与另一个乘数寄存器拼接起来就是最终乘积。原码一位乘法符号位单独运算，乘法运算过程中只有绝对值参加运算。如下图是0.1101和0.0011相乘的步骤，紫色部分移入存放0.0011的寄存器 。</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006151815637.png" alt="image-20211006151815637" /><figcaption aria-hidden="true">image-20211006151815637</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006151815637.png" alt="原码一位乘法示例" /><figcaption aria-hidden="true">原码一位乘法示例</figcaption>
 </figure>
 <p>原码一位乘法硬件实现如图</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006153700867.png" alt="image-20211006153700867" /><figcaption aria-hidden="true">image-20211006153700867</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006153700867.png" alt="原码一位乘法硬件实现" /><figcaption aria-hidden="true">原码一位乘法硬件实现</figcaption>
 </figure>
 <h4 id="补码一位除法">补码一位除法</h4>
 <p>补码一位乘法类似原码一位乘法，但是在更新部分积要加上的数时需要看另一个乘数的最后一位与附加位，可以理解为将另一个乘数在右边扩充一位0后看最后两位，当两位为11或00时累加上0，为01时加上另一个乘数的补码，为10时加上相反数的补码。其余移动规则与原码一位加法一致。0.1101与1.1101相乘的步骤如下</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006154322906.png" alt="image-20211006154322906" /><figcaption aria-hidden="true">image-20211006154322906</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006154322906.png" alt="补码一位除法示例" /><figcaption aria-hidden="true">补码一位除法示例</figcaption>
 </figure>
 <h4 id="阵列乘法器">阵列乘法器</h4>
 <p>上述乘法器存在大量循环运算因此效率不高，考虑设计不需要循环的乘法器，于是可以设计模拟手工乘法的阵列乘法器，如下图</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006155808223.png" alt="image-20211006155808223" /><figcaption aria-hidden="true">image-20211006155808223</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006155808223.png" alt="串行进位阵列乘法器" /><figcaption aria-hidden="true">串行进位阵列乘法器</figcaption>
 </figure>
 <p>但是由于存在串行进位，该乘法器效率依然不高，考虑到每一列的进位是对下一列一整列的加法起作用的，于是可以设计效率更高的阵列乘法器</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006155932130.png" alt="image-20211006155932130" /><figcaption aria-hidden="true">image-20211006155932130</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006155932130.png" alt="成组进位阵列乘法器" /><figcaption aria-hidden="true">成组进位阵列乘法器</figcaption>
 </figure>
 <p>此时同一行之间不存在串行进位，在最后一行有串行进位处理所有的进位即可。</p>
 <p>上面是原码阵列乘法器，对补码，只需处理一下补码即可。</p>
 <h3 id="定点除法运算">定点除法运算</h3>
 <p>根据手工除法，我们可以总结出原码余数恢复的除法方法，即不断试商然后求余右移，当余数为正数时说明商可以上1，为负数时说明应该上0，然后加上之前减去的除数。一个简单的例子如下，计算0.1001除以0.1011</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006181227969.png" alt="image-20211006181227969" /><figcaption aria-hidden="true">image-20211006181227969</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211006181227969.png" alt="余数恢复定点除法" /><figcaption aria-hidden="true">余数恢复定点除法</figcaption>
 </figure>
 <p>本例中一开始尝试减除数，发现减得负数，于是上0后加上除数，上完商后余数右移，再尝试减除数，发现可以减而后上1，上完后移动余数，直至商的精度和除数精度一致。</p>
 <p>由于恢复余数的操作次数不确定造成运算时间不确定，会拖慢除法速度，实际一般采用不恢复余数除法。</p>
 <p>不恢复余数除法中,先直接减去除数，然后根据余数的正负，上1或0，然后余数左移，再根据本次上商为0或1，加上或减去余数，得到余数后重复上述步骤直至达到精度。下图为0.1001除以0.1011步骤</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008195830114.png" alt="image-20211008195830114" /><figcaption aria-hidden="true">image-20211008195830114</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008195830114.png" alt="不恢复余数定点除法" /><figcaption aria-hidden="true">不恢复余数定点除法</figcaption>
 </figure>
 <p>参考原码一位乘法的电路，可以设计如图所示的原码不恢复余数一位除法计算电路</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008203313567.png" alt="image-20211008203313567" /><figcaption aria-hidden="true">image-20211008203313567</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008203313567.png" alt="原码不恢复余数一位除法计算电路" /><figcaption aria-hidden="true">原码不恢复余数一位除法计算电路</figcaption>
 </figure>
 <h3 id="浮点运算">浮点运算</h3>
 <p>浮点数加减运算步骤：对阶，尾数运算，规格化，舍入，溢出判断。</p>
@@ -566,21 +570,21 @@
 <p>运算器的基本结构与运算器中的总线结构以及运算部件与总线的连接方式相关，分为单总线结构、双总线结构以及三总线结构三种。</p>
 <p>单总线结构运算器如下图，由于同一时刻总线上只能传输一个数据，而ALU需要两个操作数以及，故需要设计两个缓冲器放在两个输入端（当两个缓冲器都有数字后ALU输出结果通过总线到通用寄存器）或者一个在输入一个在输出（一个输入缓冲有数据后从总线得到第二个数据ALU输出结果保存在输出缓存，再由输出缓存输出至寄存器），完成一次运算需要三个时钟周期</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009163617088.png" alt="image-20211009163617088" /><figcaption aria-hidden="true">image-20211009163617088</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009163617088.png" alt="单总线ALU" /><figcaption aria-hidden="true">单总线ALU</figcaption>
 </figure>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008211645547.png" alt="image-20211008211645547" /><figcaption aria-hidden="true">image-20211008211645547</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211008211645547.png" alt="单总线ALU的另一种形式" /><figcaption aria-hidden="true">单总线ALU的另一种形式</figcaption>
 </figure>
 <p>双总线运算结构如下图，需要设计一个寄存器以解决某一个总线上的数据冲突问题。一次运算需要2个时钟周期</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009163956514.png" alt="image-20211009163956514" /><figcaption aria-hidden="true">image-20211009163956514</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009163956514.png" alt="双总线ALU" /><figcaption aria-hidden="true">双总线ALU</figcaption>
 </figure>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009164014525.png" alt="image-20211009164014525" /><figcaption aria-hidden="true">image-20211009164014525</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009164014525.png" alt="双总线ALU的另一种形式" /><figcaption aria-hidden="true">双总线ALU的另一种形式</figcaption>
 </figure>
 <p>三总线结构如下，旁路器的作用是进行寄存器间的数据传输，不需要缓存，一个时钟周期可以得到结果。</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009164246426.png" alt="image-20211009164246426" /><figcaption aria-hidden="true">image-20211009164246426</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009164246426.png" alt="三总线ALU" /><figcaption aria-hidden="true">三总线ALU</figcaption>
 </figure>
 <p>至于浮点运算器，一般需要采用流水线来完成浮点数加减运算的几个步骤。</p>
 <h2 id="第四章存储系统">第四章、存储系统</h2>
@@ -601,7 +605,7 @@
 </ul>
 <p>存储系统分层结构：</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009172725424.png" alt="image-20211009172725424" /><figcaption aria-hidden="true">image-20211009172725424</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211009172725424.png" alt="存储系统分层结构" /><figcaption aria-hidden="true">存储系统分层结构</figcaption>
 </figure>
 <p>主存储器（内存）的特征</p>
 <ul>
@@ -616,19 +620,19 @@
 <p>T3 T4为负载管，提供能量。保证数据信息的保持</p>
 <p>外围四管T5 T6 T7 T8为门控管，在XY译码线都接高电平时为导通状态，通过I/O接电位时进行写操作，或者通过IO输出信号得到存储的值。</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011160321847.png" alt="image-20211011160321847" /><figcaption aria-hidden="true">image-20211011160321847</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011160321847.png" alt="六管存储单元" /><figcaption aria-hidden="true">六管存储单元</figcaption>
 </figure>
 <p>SRAM由于MOS管过多，功耗较大，存储密度低，单位容量成本高</p>
 <p>得到SRAM存储单元后，可以根据存储单元扩展并且引入译码器得到SRAM存储器，有两种扩展方式，一维扩展所有单元由一个译码器的到信号控制X Y译码线，二维扩展单元由行列两个译码器分别控制译码线以获得某个单元的数据。由于一维扩展中译码器输出过多，开销过大，常采用二维扩展。</p>
 <p>上面给出了一次访问一个比特数据的方法，若想一次访问多个bit，可将一位存储器的地址线并联在一起。</p>
 <p>静态MOS存储器的结构如下图所示，设计思想基于前面的讨论，增加的驱动器是由于译码器一根输出线要负载一整行或一整列三极管，为保证负载能力增加驱动器</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011164019573.png" alt="image-20211011164019573" /><figcaption aria-hidden="true">image-20211011164019573</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011164019573.png" alt="SRAM" /><figcaption aria-hidden="true">SRAM</figcaption>
 </figure>
 <h4 id="动态mos存储器">动态MOS存储器</h4>
 <p>SRAM由于MOS管过多，功耗较大，存储密度低，单位容量成本高。为了减少MOS管数量，可以去掉两个负载管，换成电容，设计如下四管DRAM存储器存储单元。该存储单元依然由A、B两点电位表示信息，将负载电路换为两个电容，同时为电容配套相应充电的T9 T10以及旁路电容CD</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011170044347.png" alt="image-20211011170044347" /><figcaption aria-hidden="true">image-20211011170044347</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011170044347.png" alt="四管DRAM存储单元" /><figcaption aria-hidden="true">四管DRAM存储单元</figcaption>
 </figure>
 <p>该单元的写操作和SRAM的分析一致，两译码器接高电位，T5 T6 T7 T8导通，通过I/O写入信息同时给C1 C2其中一个充电。</p>
 <p>读操作时，由于C1 C2电容一般很小，无法用于产生信号表示信息且信息会丢失，所以需要首先打开预充MOS管对旁路电容充电，然后关闭预充MOS管，后X接高电位打开T5 T6，旁路电容的一路会和C1 C2中充过电的相连，不会消耗太多电荷，另一路则会由于T1 T2中的某一路饱和导通而快速放电，然后Y接高电位，通过旁路电容可以产生电流信号判断存储内容。</p>
@@ -644,7 +648,7 @@
 </ul>
 <p>观察DRAM存储单元结构图，我们可以精简预充电路，同时仅将电容有无电荷作为数据的标识，可以得到常用的单管DRAM。如下图</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011173240513.png" alt="image-20211011173240513" /><figcaption aria-hidden="true">image-20211011173240513</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211011173240513.png" alt="单管DRAM存储单元" /><figcaption aria-hidden="true">单管DRAM存储单元</figcaption>
 </figure>
 <p>6管SRAM 功耗加大，MOS管过多，存储密度低，单位容量成本高，主要用于CPU内部的cache，目前计算机内存普遍采用的是单管DRAM技术。</p>
 <h3 id="主存的组织及与cpu的连接方式">主存的组织及与CPU的连接方式</h3>
@@ -654,9 +658,9 @@
 <li>连接数据线的数量与机器字长有关</li>
 <li>不同芯片的控制线的类型不同，SRAM有片选信号和读写控制线，ROM只有片选信号，DRAM没有片选信号</li>
 </ol>
-<p>存储器的扩展方式有两种，一是位扩展，即数据总线扩展，将所有芯片的地址线和读写控制线并联后与CPU的地址线和读写控制线相连。一个地址激活多个芯片，芯片将这些数据并行输入数据总线，如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208125645015.png" alt="image-20211208125645015" /></p>
-<p>第二种是字扩展，即容量扩展，将地址位多出的部分连接到译码器，译码器的输出接存储芯片的片选信号，地址线剩下的位接到每一个存储芯片，相当于翻书时先用译码器找到页码，然后读出那一页的行号列号，如下图所示。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208130044705.png" alt="image-20211208130044705" /></p>
-<p>当然也支持字位同时扩展，效果如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208130514800.png" alt="image-20211208130514800" /></p>
+<p>存储器的扩展方式有两种，一是位扩展，即数据总线扩展，将所有芯片的地址线和读写控制线并联后与CPU的地址线和读写控制线相连。一个地址激活多个芯片，芯片将这些数据并行输入数据总线，如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208125645015.png" alt="位扩展" /></p>
+<p>第二种是字扩展，即容量扩展，将地址位多出的部分连接到译码器，译码器的输出接存储芯片的片选信号，地址线剩下的位接到每一个存储芯片，相当于翻书时先用译码器找到页码，然后读出那一页的行号列号，如下图所示。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208130044705.png" alt="字扩展" /></p>
+<p>当然也支持字位同时扩展，效果如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208130514800.png" alt="字位同时扩展" /></p>
 <h3 id="并行主存系统">并行主存系统</h3>
 <p>使用存储系统的并行性来提高其存取速度，有以下几种方式</p>
 <ul>
@@ -677,14 +681,14 @@
 <li>访问效率<span class="math inline">\(e\)</span>，设平均访问时间为<span class="math inline">\(t_a\)</span>，则<span class="math inline">\(e=\frac{t_a}{t_c} = \frac{t_c}{ht_c+{1-h}t_m} = \frac{1}{h+(1-h)r}\)</span></li>
 </ul>
 <h4 id="cache读写流程">cache读写流程</h4>
-<p>有了cache之后，CPU访问主存的读流程如下，基本流程是先访问cache，cache有则从cache读，cache没有再从内存读并存入cache。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208152941769.png" alt="image-20211208152941769" /></p>
-<p>CPU写数据的流程如下，写操作有两个需要注意的点，一是命中时写入cache后主存和cache的数据就不相同了，这样数据称为脏数据（DirtyData），此时要不要同步数据，即是执行写穿还是写回，前者慢但没有脏数据，后者块但是有脏数据；第二个问题是缺失时是否执行写分配，即对写入数据要不要放入cache。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208153207372.png" alt="image-20211208153207372" /></p>
+<p>有了cache之后，CPU访问主存的读流程如下，基本流程是先访问cache，cache有则从cache读，cache没有再从内存读并存入cache。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208152941769.png" alt="cache读流程" /></p>
+<p>CPU写数据的流程如下，写操作有两个需要注意的点，一是命中时写入cache后主存和cache的数据就不相同了，这样数据称为脏数据（DirtyData），此时要不要同步数据，即是执行写穿还是写回，前者慢但没有脏数据，后者块但是有脏数据；第二个问题是缺失时是否执行写分配，即对写入数据要不要放入cache。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208153207372.png" alt="cache写流程" /></p>
 <p>通过上面的流程图可以看出实现cache的关键技术，分别有数据的查找方式，cache与内存的地址映射策略，cache满后替换块的策略以及写入策略。其中数据查找方式和地址映射策略紧密相关，因为CPU是通过主存地址在cache中查找数据的。</p>
 <h4 id="相联存储器">相联存储器</h4>
-<p>查找数据的基本模型是相联存储器（CAM），由相等比较器和三态门以及存储设备组成，基本单元为键值对，输入键值，键值与存储键值的存储单元比较，相当输出对应数据三态门打开使数据输出，基本结构如下，其查找是并发进行的，查找速度非常快，但是硬件成本很高。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208154223175.png" alt="image-20211208154223175" /></p>
+<p>查找数据的基本模型是相联存储器（CAM），由相等比较器和三态门以及存储设备组成，基本单元为键值对，输入键值，键值与存储键值的存储单元比较，相当输出对应数据三态门打开使数据输出，基本结构如下，其查找是并发进行的，查找速度非常快，但是硬件成本很高。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208154223175.png" alt="相联存储器" /></p>
 <h4 id="地址映射">地址映射</h4>
 <p>地址映射有以下几种模型</p>
-<p>全相联映射：cache的每一个位置都可以存放任意数据块，相当于一个CAM，通过块地址TAG查找块，然后通过偏移地址选择块内哪个数据输出。写入数据时同样先查找，命中后写入数据并将脏数据位置1。其硬件实现模型如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208154836345.png" alt="image-20211208154836345" /></p>
+<p>全相联映射：cache的每一个位置都可以存放任意数据块，相当于一个CAM，通过块地址TAG查找块，然后通过偏移地址选择块内哪个数据输出。写入数据时同样先查找，命中后写入数据并将脏数据位置1。其硬件实现模型如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208154836345.png" alt="全相联cache" /></p>
 <p>全相联cache有以下特点：</p>
 <ul>
 <li>一行可以存放任意一块主存数据，cache利用率高</li>
@@ -692,7 +696,7 @@
 <li>每一行对应一个比较电路，成本高</li>
 <li>由于几乎没有组织策略，所以替换策略复杂</li>
 </ul>
-<p>直接相联映射：一个主存地址块只能映射到某一个固定的cache行，位置为主存块号对cache行数取模，设cache行数为n，则相当于对于主存中的块n个一组，称为一个区，主存地址可以被分为区地址，行索引和块内偏移。行可以直接通过译码器选中，一行就对应那么几个区，只要区地址相等就命中，否则没命中替换掉就好。硬件实现如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208161056670.png" alt="image-20211208161056670" /></p>
+<p>直接相联映射：一个主存地址块只能映射到某一个固定的cache行，位置为主存块号对cache行数取模，设cache行数为n，则相当于对于主存中的块n个一组，称为一个区，主存地址可以被分为区地址，行索引和块内偏移。行可以直接通过译码器选中，一行就对应那么几个区，只要区地址相等就命中，否则没命中替换掉就好。硬件实现如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208161056670.png" alt="直接相联cache" /></p>
 <p>直接相联cache有以下特点：</p>
 <ul>
 <li>主存中的数据块只能映射到特定行，cache利用率低，命中率也同样降低</li>
@@ -702,7 +706,7 @@
 </ul>
 <p>组相联cache：将cache分为固定大小的组，每组k行，称为k路组相联，主存数据块先采用直接相连的方式定位到固定的组，组内采用全相联映射到cache行。此时主存地址分为标记tag，组索引index和块内偏移offset。组索引可以快速确定到一个小范围cache，然后在组内通过tag比较。一个二路组相联的硬件实现如下：</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208163147543.png" alt="image-20211208163147543" /><figcaption aria-hidden="true">image-20211208163147543</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208163147543.png" alt="k路组相联cache" /><figcaption aria-hidden="true">k路组相联cache</figcaption>
 </figure>
 <p>不难发现对组相连映射，当index长度为0时就是一个全相连，Tag长度为0时就是一个直接相连</p>
 <h4 id="替换算法">替换算法</h4>
@@ -724,10 +728,10 @@
 <h3 id="虚拟存储器">虚拟存储器</h3>
 <p>cache解决的是提高访问速度的问题，为解决容量问题，人们提出了虚拟存储器的概念。</p>
 <p>虚拟存储器通过在主存和辅存之间增加部分软件（如操作系统）和必要的硬件（如地址映射和转换机构，缺页中断结构等）使辅存和主存构成一个有机的整体，为CPU提供一个大容量主存。其基本思路与cache原理类似，加载程序时并不直接将程序和代码载入主存，而仅在虚拟地址转换表中登记虚拟地址对应的磁盘地址。虚拟存储器中的地址分为虚拟地址，主存地址和辅存地址。</p>
-<p>本节主要讲页式虚拟存储器，在页式虚拟存储器中，虚拟空间和主存空间被分为大小相同的页，虚拟地址被分为虚拟页号（VPN）和虚拟页偏移（VPO），主存空间被分为物理页号（PPN）和物理页偏移（PPO）。显然VPN比PPN大，PPO和VPO大小相等，通过虚拟地址查找物理地址只需要知道VPN与PPN的对应关系，存放该对应关系的表称为页表。此外还有一些常见的缩写，如虚拟地址VA，物理地址PA，页表项PTE，页表项地址PTEA。通过以上叙述，一级页表虚拟地址转化为物理地址的过程如下，其中PTBR存放页表的首地址，类似数组首地址的作用。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208182140033.png" alt="image-20211208182140033" /></p>
-<p>由于页表一般很大，所以常采用多级页表的方式查询，但这样显然效率太低，所以设置了一个页表的缓存TLB，称为快表，其中存放着一些常用页表项。引入TLB后，VA转PA的方式变为如下图所示，即先查TLB，没有再查慢表。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208182434949.png" alt="image-20211208182434949" /></p>
+<p>本节主要讲页式虚拟存储器，在页式虚拟存储器中，虚拟空间和主存空间被分为大小相同的页，虚拟地址被分为虚拟页号（VPN）和虚拟页偏移（VPO），主存空间被分为物理页号（PPN）和物理页偏移（PPO）。显然VPN比PPN大，PPO和VPO大小相等，通过虚拟地址查找物理地址只需要知道VPN与PPN的对应关系，存放该对应关系的表称为页表。此外还有一些常见的缩写，如虚拟地址VA，物理地址PA，页表项PTE，页表项地址PTEA。通过以上叙述，一级页表虚拟地址转化为物理地址的过程如下，其中PTBR存放页表的首地址，类似数组首地址的作用。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208182140033.png" alt="虚拟地址转物理地址过程（无TLB）" /></p>
+<p>由于页表一般很大，所以常采用多级页表的方式查询，但这样显然效率太低，所以设置了一个页表的缓存TLB，称为快表，其中存放着一些常用页表项。引入TLB后，VA转PA的方式变为如下图所示，即先查TLB，没有再查慢表。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208182434949.png" alt="虚拟地址转物理地址（有TLB）" /></p>
 <p>之前说过虚拟存储器是将主存和辅存看作一个整体，上面的讨论还只是关于数据在主存中的情况，假设数据不在主存中，那么页表项中会有标记，则产生缺页异常，操作系统会将产生缺页异常的进程挂起，将辅存中有关的页调入主存，然后唤醒进程。</p>
-<p>综合cache，页式虚拟存储器，CPU访问一个地址的流程图如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208183254841.png" alt="image-20211208183254841" /></p>
+<p>综合cache，页式虚拟存储器，CPU访问一个地址的流程图如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211208183254841.png" alt="CPU访问地址" /></p>
 <h3 id="cache相关计算">cache相关计算</h3>
 <p>cache最重要的模式就是组相联模式，当cache中只有一个组时就是全相联，当每一行都是一个组时就是直接相连，所以基本上考题都是针对组相联来的。</p>
 <p>首先对组相联要搞清以下几个概念</p>
@@ -783,7 +787,7 @@
 <li>数据加工：利用ALU对数据进行处理以及控制数据的传递</li>
 <li>中断处理：对内部异常和外部中断请求进行响应</li>
 </ul>
-<p>在冯诺依曼体系结构中，CPU由运算器和控制器组成。从硬件的角度看，CPU由一系列寄存器，ALU和操作控制器组成，如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209101554544.png" alt="image-20211209101554544" /></p>
+<p>在冯诺依曼体系结构中，CPU由运算器和控制器组成。从硬件的角度看，CPU由一系列寄存器，ALU和操作控制器组成，如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209101554544.png" alt="CPU结构" /></p>
 <p>上图中的程序计数器保存将<strong>要执行的指令的字节地址</strong>，地址寄存器和数据寄存器就是存放地址和数据的，这俩都不是必须的，因为下面有通用寄存器，通用寄存器就是在汇编语言中可以使用的寄存器。指令寄存器存放指令，指令经过译码器送入操作控制器产生控制信号序列，或者通过地址码读出数据。</p>
 <p>根据上面的图，现在要实现一个CPU要解决的就是两个问题，一是数据如何传送，而是操作控制器如何实现。对于前者，我们有<strong>单总线数据通路</strong>和<strong>专用通路结构数据通路</strong>，对于第二个问题，我们有<strong>硬布线控制器</strong>和<strong>微程序控制器</strong>。</p>
 <p>为方便讨论，本章将cache视为透明部件，即CPU直接向内存读写数据。</p>
@@ -793,15 +797,15 @@
 <p>注意虽然可以对一个指令系统的指令周期划分为几个机器周期，但是一般这种划分是不会适用于所有的指令的，可能有的指令没有某个机器周期。同时不同指令的相同机器周期包含的时钟周期不一定一样。如果我们按照这种切合实际的情况，即不同指令机器周期数不同，不同指令的同一时钟周期数不同，则称为<strong>变长指令周期</strong>。当然我们为了设计简单也可以强行安排所有指令有相同的机器周期数，所有机器周期数有相同的时钟周期数，这样的话对某些指令会有空转的时间，但是设计简单，称为<strong>定长指令周期</strong>。</p>
 <p>当然划分机器周期时说是为了探寻一般规律，其实是为了简化设计，当我们能够设计复杂的结构时，就不需要机器周期的概念了（其实变长指令周期系统中机器周期已经显得不重要了），就按照指令需要的时钟周期进行时序同步就好，这称为<strong>现代时序系统</strong>。</p>
 <h3 id="数据通路及指令操作流程">数据通路及指令操作流程</h3>
-<p>数据在各功能部件之间传送的路径称为<strong>数据通路</strong>。首先讨论数据通路的基本模型，如下图所示<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209111139761.png" alt="image-20211209111139761" /></p>
+<p>数据在各功能部件之间传送的路径称为<strong>数据通路</strong>。首先讨论数据通路的基本模型，如下图所示<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209111139761.png" alt="数据通路" /></p>
 <p>即从一个寄存器到另一个寄存器，中间经过组合逻辑（或者根本没有组合逻辑只是一条线）。这对这个图有一个定时的问题需要讨论，假设两个寄存器上跳沿有效，寄存器从时钟上跳沿到数据输出稳定的时间称为寄存器延迟<span class="math inline">\(t_{clk\_to\_q}\)</span>，数据处理单元对寄存器的输出数据进行加工处理有一个关键路径延迟（即最长路径延迟）<span class="math inline">\(T_{max}\)</span>，寄存器输入端在下一个时钟上跳沿到来之前数据稳定的时间称为寄存器建立时间<span class="math inline">\(T_{set\_up}\)</span>，时钟上跳沿到来之后输入数据还需要一个稳定时间<span class="math inline">\(T_{hold}\)</span>。注意上面几个定义是输入还是输出端口的数据。</p>
 <p>为了数据能够稳定传输，要求数据通路的最小时钟周期（寄存器连接的时钟周期）必须大于<span class="math inline">\(T_{clk\_to\_q} + T_{max}+T_{set\_up}\)</span>。否则一定有一个地方的数据无法正确保持。假设组合逻辑的最短路径延迟为<span class="math inline">\(T_{min}\)</span>，同时还要求<span class="math inline">\(T_{hold} \lt T_{clk\_to\_q} + T_{min}\)</span>。</p>
-<p>一种最简单的数据通路结构为单总线结构的数据通路。单总线结构的数据通路的CPU中有一条内总线连接了运算器、控制器、寄存器堆等核心部件，还有外总线连接CPU，内存和I/O设备。一个mips单总线CPU结构如图所示<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209113916424.png" alt="image-20211209113916424" /></p>
+<p>一种最简单的数据通路结构为单总线结构的数据通路。单总线结构的数据通路的CPU中有一条内总线连接了运算器、控制器、寄存器堆等核心部件，还有外总线连接CPU，内存和I/O设备。一个mips单总线CPU结构如图所示<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209113916424.png" alt="单总线MIPS CPU结构" /></p>
 <p>控制流就是控制信号，其中下边标n表示写使能端口，下标out表示读使能端口，都是从总线中读，向总线中写（一般是内总线，访存指令可能向外总线），难以理解的信号有IR寄存器的IR(A)<sub>out</sub>和IR(B)<sub>out</sub>，前者代表向总线中输出指令中的地址，后者代表向总线中输出指令中的立即数。显然单总线数据通路完成一条指令需要多个时钟周期。下面以五条mips指令说明该CPU的运行原理。五条mips指令的说明如下</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209113751151.png" alt="image-20211209113751151" /><figcaption aria-hidden="true">image-20211209113751151</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209113751151.png" alt="指令描述" /><figcaption aria-hidden="true">指令描述</figcaption>
 </figure>
-<p>对着上面的图，可以分析出这五条指令需要几个时钟周期，每个时钟周期需要进行哪些。先按照三级时序，将指令分为取值周期（取指令），计算周期（主要是计算地址），执行周期（计算数据，写入相应寄存器或内存），中断周期，每一个方框表示一个时钟周期，如下图：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209114747944.png" alt="image-20211209114747944" /></p>
+<p>对着上面的图，可以分析出这五条指令需要几个时钟周期，每个时钟周期需要进行哪些。先按照三级时序，将指令分为取值周期（取指令），计算周期（主要是计算地址），执行周期（计算数据，写入相应寄存器或内存），中断周期，每一个方框表示一个时钟周期，如下图：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209114747944.png" alt="指令执行流程图" /></p>
 <p>根据这个图，可以写出每一个时钟周期需要的信号，比如取值周期第一个时钟周期需要PC<sub>out</sub>，X<sub>in</sub>和AR<sub>in</sub>。</p>
 <p>还有一种数据通路结构称为专用通路数据结构，即各部件之间采用专用数据通路连接而不使用总线。<sub>因为不考所以懒得看</sub></p>
 <p><strong>后面的所有讨论都基于单总线数据通路结构，且都基于上面给出的五条指令，且暂时不考虑中断周期，即执行周期之后直接回取值周期第一个节拍</strong></p>
@@ -810,46 +814,52 @@
 <p>之前提到过指令周期，机器周期和时钟周期的概念，早期计算机采用状态周期，节拍电位，和节拍脉冲三级时序体系来对控制信号进行定时控制。</p>
 <p>状态周期用来表示执行到哪个机器周期，以上面的MIPS CPU为例，绿色的取值周期属于一个状态周期，黄色的计算周期属于一个状态周期，蓝色的执行周期属于一个状态周期，在一个状态周期内周期电位应该保持为高电位。</p>
 <p>节拍电位用电位表示当前处于第几个节拍，如上图每一个框为一个节拍，一个节拍内节拍电位是高电平。</p>
-<p>节拍脉冲就是时钟信号，一般一个节拍电位持续时间为一个时钟周期，周期中间上跳沿是CPU中寄存器锁存值的时刻，而下跳沿改变节拍。以上面的MIPS指令为例，定长指令周期三级时序图如下。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209152919630.png" alt="image-20211209152919630" /></p>
+<p>节拍脉冲就是时钟信号，一般一个节拍电位持续时间为一个时钟周期，周期中间上跳沿是CPU中寄存器锁存值的时刻，而下跳沿改变节拍。以上面的MIPS指令为例，定长指令周期三级时序图如下。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209152919630.png" alt="定长指令周期三级时序" /></p>
 <p>对一些指令，如add和addi，可能会有空转的周期，而且取指周期和计算周期的节拍数不一样，也会有空转的节拍。但是这样设计有一个好处，就是我只需要通过时钟信号，按规律无脑调制这些电位出来就行了，比如取值周期高电位持续四个时钟周期，然后回低电位八个时钟周期，然后再到高电位四个时钟周期，按这样的思路生成上面7个电位，然后这些电位和译码指令信号经过一个组合逻辑就可以生成一个节拍内的控制信号。当然我们也可以把一个状态周期的一个节拍视为一个状态，看成一个十二个状态的有限状态机，这个思路可以启发我们设计现代时序电路。</p>
 <p>一个比较灵活的变长指令周期三级时序图如下：</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209153054318.png" alt="image-20211209153054318" /><figcaption aria-hidden="true">image-20211209153054318</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209153054318.png" alt="变长指令周期三级时序" /><figcaption aria-hidden="true">变长指令周期三级时序</figcaption>
 </figure>
-<p>这样没有了空转的时钟周期，但是我们无法简单通过时序调制生成信号了，必须通过状态机的思想。下面着重介绍状态机的思想。针对那五个MIPS指令，定长指令周期状态机如下图所示<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154231667.png" alt="image-20211209154231667" /></p>
+<p>这样没有了空转的时钟周期，但是我们无法简单通过时序调制生成信号了，必须通过状态机的思想。下面着重介绍状态机的思想。针对那五个MIPS指令，定长指令周期状态机如下图所示</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154231667.png" alt="定长指令周期三级时序状态图" /><figcaption aria-hidden="true">定长指令周期三级时序状态图</figcaption>
+</figure>
 <p>空白表示空转的周期，显然这是一个无条件转换的FSM，现态和次态都非常清楚。不过要同一状态在哪个沿跳变，一般设为在下跳沿改变状态。变长指令周期的FSM如下图：</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154505746.png" alt="image-20211209154505746" /><figcaption aria-hidden="true">image-20211209154505746</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154505746.png" alt="变长指令周期三级时序状态图" /><figcaption aria-hidden="true">变长指令周期三级时序状态图</figcaption>
 </figure>
-<p>这里就有状态的条件转化了，现态得根据输入的指令不同转变状态。这就启发了我们既然要根据状态指令的不同决定次态，那么大家为什么还要在一个锅里吃饭？所以就有下面的现代时序状态机<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154725658.png" alt="image-20211209154725658" /></p>
+<p>这里就有状态的条件转化了，现态得根据输入的指令不同转变状态。这就启发了我们既然要根据状态指令的不同决定次态，那么大家为什么还要在一个锅里吃饭？所以就有下面的现代时序状态机</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209154725658.png" alt="现代时序状态机" /><figcaption aria-hidden="true">现代时序状态机</figcaption>
+</figure>
 <p>不难发现这和上面哪个方框图是一一对应的，每个状态直对应一组操作信号，而不必像三级时序中先得到状态周期然后在去进行组合逻辑。即三级时序状态机中的状态只包含电位信息，而现代时序状态机中的状态是操作信号。</p>
 <h3 id="硬布线控制器">硬布线控制器</h3>
 <p>硬布线控制器又称组合逻辑控制器，直接由各种逻辑门电路和除法器构成。前面的讨论其实也是基于硬布线控制器思想的，即状态信息通过组合逻辑生成控制信号。</p>
-<p>三级时序硬布线控制器的思想就是上面所说的，其模型如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155405222.png" alt="image-20211209155405222" /></p>
+<p>三级时序硬布线控制器的思想就是上面所说的，其模型如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155405222.png" alt="三级时序硬布线控制器" /></p>
 <p>时序发生器只管产生三级时序电位，产生的电位送到组合逻辑单元和译码信号生成操作信号，所谓指令译码信号就是根据指令编码给出某一位信号，假设只考虑咱那五条指令，译码器右端就应该有五个输出分别代表五个信号，假设没有信号为低电位，指令译码的功能就是根据编码在某个指令对应的输出端口输出高电位。</p>
 <p>当然时序发生器可以采用状态机设计，一般时序发生器的结构如下：</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155557793.png" alt="image-20211209155557793" /><figcaption aria-hidden="true">image-20211209155557793</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155557793.png" alt="三级时序硬布线控制器的时序发生器" /><figcaption aria-hidden="true">三级时序硬布线控制器的时序发生器</figcaption>
 </figure>
-<p>而现代时序硬布线控制器直接通过状态得到操作信号，结构如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155701938.png" alt="image-20211209155701938" /></p>
+<p>而现代时序硬布线控制器直接通过状态得到操作信号，结构如下：<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209155701938.png" alt="现代时序硬布线控制器" /></p>
 <h3 id="微程序控制器">微程序控制器</h3>
 <p>微程序控制器的基本思想是仿照程序设计的基本方法，将实现指令系统中所有指令功能所需要的控制信号按照一定的规则编码为微指令，将其放在一个ROM中，执行指令时按序执行微指令即可，执行微指令则直接给出微指令包含的控制信号。</p>
 <p>控制部件向执行部件发出各种控制命令称为微命令，部件收到微命令进行的操作称为位操作，其中有的微操作可以在一个周期内执行，称为相容性微操作，有的则不行，比如内存的读信号和写信号，同时向总线输出的信号，ALU上的信号，称为互斥性微指令。显然一条微指令中只能出现相容的微命令。</p>
 <p>常见的一种微指令格式如下：</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209161002844.png" alt="image-20211209161002844" /><figcaption aria-hidden="true">image-20211209161002844</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209161002844.png" alt="一种微指令格式" /><figcaption aria-hidden="true">一种微指令格式</figcaption>
 </figure>
 <p>不难发现这其实就是硬布线中一种状态对应的输出信号后面的顺序控制字段。顺序控制字段中，下址字段给出下一条指令的地址，P0和P1指出执行过程中需要测试的外部条件，P<sub>IR</sub>为1时判断是否到达了取指阶段的最后一条命令，应根据不同的指令译码信号跳转到微程序地址。P<sub>equal</sub>是对于beq指令，比较equal信号是否为1，是则跳转到指定执行位置（注意是程序跳转到执行位置，不是微程序），不是则回取值周期第一个节拍，beq的下址字段一般为0（其实是书上和实验上都是0），所以beq指令在equal信号为0（即不相等）时执行下址字段地址，否则继续执行后面的微程序。微指令在存储器的存储方式一般是像下面这样的，一般一条微指令的操作控制字段正好对应上面硬布线讨论过的一个状态的输出信号。</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209162414822.png" alt="image-20211209162414822" /><figcaption aria-hidden="true">image-20211209162414822</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209162414822.png" alt="微指令存储器中微指令的一种分布" /><figcaption aria-hidden="true">微指令存储器中微指令的一种分布</figcaption>
 </figure>
 <p>可见微程序大部分时候都顺序执行，所以下址字段显得很没必要，完全可以改为一位，表示是否执行到最后一条微指令，不是则微指令地址加1，是则回取指指令第一条。</p>
 <blockquote>
 <p>这里beq指令比较反直觉，由于前面的规定，beq在对equal进行判断时，其下址应该是0，即下址不是顺序地址，但是按照之前的规定equal为0时要执行下址字段，由于下址不是顺序地址，要对beq的下址计算坐单独处理。当然更优雅的做法是让beq在equal为0时执行本条微指令地址加1的地址，否则回到0。<sub>可惜实验不是这样的</sub></p>
 </blockquote>
-<p>用下址字段表示下一条微指令地址的下址字段法，用本次地址加1生成下一条微指令的方法称为计数器法。两种方式的控制器如下图所示，第一个是下址字段法，第二个是计数器法。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209163804769.png" alt="image-20211209163804769" /></p>
+<p>用下址字段表示下一条微指令地址的下址字段法，用本次地址加1生成下一条微指令的方法称为计数器法。两种方式的控制器如下图所示，第一个是下址字段法，第二个是计数器法。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209163804769.png" alt="下址字段法微程序控制器" /></p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209163825617.png" alt="image-20211209163825617" /><figcaption aria-hidden="true">image-20211209163825617</figcaption>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209163825617.png" alt="计数器法微程序控制器" /><figcaption aria-hidden="true">计数器法微程序控制器</figcaption>
 </figure>
 <p>上面的微指令的编码称为直接表示法，实际上我们可以对直接表示法得到的微指令编码进行缩短，比如将互斥的微指令放在一组进行编号，对编号使用译码器得到具体的操作信号。这种方法成为字段译码法，虽然缩短了微程序的长度，但是加入译码器之后显然会降低执行效率。当然也可以将直接表示法和编码表示法混合使用。</p>
 <p>直接表示法和字段译码法表示的微指令称为水平型微指令，能在一个微指令周期内给出多个微命令。还有一种微指令称为垂直型微指令，其将微命令代码化，给机器指令又编了个指令集，纯纯的牛马，不学也罢。</p>
@@ -857,9 +867,12 @@
 <p><sub>说起来是不考的，但是第九章又有，反正实验要做，干脆总结一下</sub></p>
 <p>异常：通常是CPU内部引起的异常事件，也称内部中断或软件中断，可进一步分为故障（由指令执行引起的异常），自陷（Trap，主动调用的异常，用于系统调用），终止（硬件故障，大概率要寄，只能重启）</p>
 <p>外部中断：指外部设备向CPU发送的中断请求，如I/O中断</p>
-<p>异常与中断的处理过程基本一致，后文统一称为中断。基本过程为先关中断禁止中断请求（中断响应式原子操作，不可被打断），然后保存当前程序执行断点，然后识别中断，转到中断响应程序，处理完中断之后恢复中断发生之前的现场，开中断继续接收中断请求。流程图如下。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209165910181.png" alt="image-20211209165910181" /></p>
-<p>要让CPU支持中断处理，首先咱得有中断表示位，然后呢根据老早之前那张状态周期划分图（不放这里来是因为马上有新图辣）中断的判断应该在一条指令执行完后，所以要在指令执行完后判断有无中断，在有中断之后加入处理中断的状态。处理中断时得保存断点地址，这里要用总线，然后还要把中断处理程序地址送PC，又要用总线。中断程序和普通程序就一样了，套用之前的FSM就行，但是最后要返回断点，把断点地址送回PC，就要多一个指令。总计多三个状态，现代时序FSM如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209170633573.png" alt="image-20211209170633573" /></p>
-<p>硬件方面要加一个中断识别装置，识别内部中断和外部中断，产生中断请求和中断号，根据中断号送中断程序地址到PC。加上这些装置后，CPU结构如下图。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209170847302.png" alt="image-20211209170847302" /></p>
+<p>异常与中断的处理过程基本一致，后文统一称为中断。基本过程为先关中断禁止中断请求（中断响应式原子操作，不可被打断），然后保存当前程序执行断点，然后识别中断，转到中断响应程序，处理完中断之后恢复中断发生之前的现场，开中断继续接收中断请求。流程图如下。</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209165910181.png" alt="中断处理流程图" /><figcaption aria-hidden="true">中断处理流程图</figcaption>
+</figure>
+<p>要让CPU支持中断处理，首先咱得有中断表示位，然后呢根据老早之前那张状态周期划分图（不放这里来是因为马上有新图辣）中断的判断应该在一条指令执行完后，所以要在指令执行完后判断有无中断，在有中断之后加入处理中断的状态。处理中断时得保存断点地址，这里要用总线，然后还要把中断处理程序地址送PC，又要用总线。中断程序和普通程序就一样了，套用之前的FSM就行，但是最后要返回断点，把断点地址送回PC，就要多一个指令。总计多三个状态，现代时序FSM如下<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209170633573.png" alt="现代时序带中断FSM" /></p>
+<p>硬件方面要加一个中断识别装置，识别内部中断和外部中断，产生中断请求和中断号，根据中断号送中断程序地址到PC。加上这些装置后，CPU结构如下图。<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209170847302.png" alt="支持中断处理的CPU结构图" /></p>
 <p><sub>七八章不考，没细看</sub></p>
 <h2 id="第九章-输入输出系统">第九章 输入输出系统</h2>
 <h3 id="输入输出设备的特性">输入输出设备的特性</h3>
@@ -871,7 +884,7 @@
 </ul>
 <p>外部设备、接口部件、总线以及相应的管理软件统称为计算机的输入/输出系统，简称I/O系统</p>
 <h3 id="io接口">I/O接口</h3>
-<p>I/O接口是连接总线与I/O设备的物理和逻辑界面，既包括物理连接电路，也包括软件逻辑接口，是总线与I/O设备交换数据的通道。接口硬件基本结构如下，其中数据缓冲寄存器是用于缓冲数据以匹配CPU和外部设备的速度差异的，状态寄存器标识外设状态，存储器不是必须的，用于设备自身的运算和处理<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209195555666.png" alt="image-20211209195555666" /></p>
+<p>I/O接口是连接总线与I/O设备的物理和逻辑界面，既包括物理连接电路，也包括软件逻辑接口，是总线与I/O设备交换数据的通道。接口硬件基本结构如下，其中数据缓冲寄存器是用于缓冲数据以匹配CPU和外部设备的速度差异的，状态寄存器标识外设状态，存储器不是必须的，用于设备自身的运算和处理<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209195555666.png" alt="I/O接口" /></p>
 <p>I/O设备同样需要编址以备CPU访问，常用的编制方式有和内存统一编址以及独立编址。对于前者，I/O设备和内存处于同一地址空间，可以用统一的访存指令访问设备，对于后者需要用特殊的方寸指令访问设备。</p>
 <p>现代计算机中用户无法直接通过软件访问I/O设备，需要通过操作系统间接访问，如使用与OS无关的I/O库如C语言的标准输入输出库，或者调用操作系统提供的内核态下的函数接口，或者通过独立的设备驱动程序。</p>
 <h3 id="数据传输控制方式">数据传输控制方式</h3>
@@ -890,8 +903,14 @@
 <p>这种操作效率要高一些，而且实时性强，但是中断是要开销的，当传输数据的时间小于中断开销的时候就很划不来，这个时候可能定时查询还快一点。</p>
 <p>关于这部分内容比较重要的是中断的一些知识。下面进行叙述</p>
 <h4 id="中断基本概念">中断基本概念</h4>
-<p>中断是指CPU暂时中止现行程序的执行，转去执行为某个<strong>随机事件</strong>服务的中断处理子程序，处理完后自动恢复原程序的执行。中断技术赋于计算机应变能力，将有序的运行和无序的事件统一起来，大大增强了系统的处理能力。关于中断的基本类型第六章已经有了一些叙述，下面是一个分类图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209202606376.png" alt="image-20211209202606376" /></p>
-<p>前面对CPU的中断处理时，已经可以看到中断是在每条指令执行完后判断的，不过在之前的讨论中只讨论了<strong>单级中断</strong>，在执行中断服务程序时不再响应其他中断请求。实际上有些中断执行过程中是运行其他中断的，即<strong>多重中断</strong>。要实现多级中断，显然开关中断不能像第六章那样处理，而应该在保存好现场之后就打开中断。如下图<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209223744854.png" alt="image-20211209223744854" /></p>
+<p>中断是指CPU暂时中止现行程序的执行，转去执行为某个<strong>随机事件</strong>服务的中断处理子程序，处理完后自动恢复原程序的执行。中断技术赋于计算机应变能力，将有序的运行和无序的事件统一起来，大大增强了系统的处理能力。关于中断的基本类型第六章已经有了一些叙述，下面是一个分类图</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209202606376.png" alt="中断分类" /><figcaption aria-hidden="true">中断分类</figcaption>
+</figure>
+<p>前面对CPU的中断处理时，已经可以看到中断是在每条指令执行完后判断的，不过在之前的讨论中只讨论了<strong>单级中断</strong>，在执行中断服务程序时不再响应其他中断请求。实际上有些中断执行过程中是运行其他中断的，即<strong>多重中断</strong>。要实现多级中断，显然开关中断不能像第六章那样处理，而应该在保存好现场之后就打开中断。如下图</p>
+<figure>
+<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20211209223744854.png" alt="支持嵌套中断的中断处理流程图" /><figcaption aria-hidden="true">支持嵌套中断的中断处理流程图</figcaption>
+</figure>
 <p>当多设备同时产生中断时，CPU先响应<strong>优先级</strong>高的中断，CPU优先级随不同中断服务程序而改变。前面提到的多重中断中，只有优先级高的中断可以打断优先级低的中断服务程序。中断优先级可以通过优先编码器实现。</p>
 <p>当然中断优先级不会是一成不变的，CPU使用<strong>中断屏蔽</strong>计算动态改变处理优先级。中断屏蔽使用中断屏蔽寄存器使用，中断寄存器中每一位对应一个中断源，位为1标识屏蔽中断，为0标识允许中断。中断信号与其中断屏蔽字的反码逻辑与输入优先编码器实现中断屏蔽和设定优先级。</p>
 <h4 id="中断请求">中断请求</h4>
