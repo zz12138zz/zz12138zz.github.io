@@ -32,18 +32,18 @@
 <meta property="og:site_name" content="某纯路人的博客">
 <meta property="og:description" content="华中科技大学计算机学院19级C++程序设计课程笔记，内容大部分来源于和ppt。作者菜的一批，若有任何纰漏或错误可以发邮件至954988021@qq.com指出有误的地方并喷我一顿，十分感谢（不过估计也没人看）。实验材料、源码、实验报告地址附在博客最后。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201109154535187.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201129103416061.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201129103924426.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201129152651973.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201109154535187.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201129103416061.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201129103924426.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201129152651973.png">
 <meta property="article:published_time" content="2020-12-21T06:36:02.000Z">
-<meta property="article:modified_time" content="2021-12-13T12:41:55.240Z">
+<meta property="article:modified_time" content="2022-04-10T02:56:53.068Z">
 <meta property="article:author" content="zz12138zz">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="编程语言学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201109154535187.png">
+<meta name="twitter:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201109154535187.png">
 
 
 <link rel="canonical" href="http://example.com/2020/12/21/C++/">
@@ -274,7 +274,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-13 20:41:55" itemprop="dateModified" datetime="2021-12-13T20:41:55+08:00">2021-12-13</time>
+        <time title="修改时间：2022-04-10 10:56:53" itemprop="dateModified" datetime="2022-04-10T10:56:53+08:00">2022-04-10</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -347,7 +347,7 @@ D[面向对象高级语言]</pre>
 <h3 id="c的单词">C++的单词</h3>
 <p>单词包括标识符和保留字。保留字不可用做自定义标识符。保留字表如下</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201109154535187.png" alt="保留字表" /><figcaption aria-hidden="true">保留字表</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201109154535187.png" alt="保留字表" /><figcaption aria-hidden="true">保留字表</figcaption>
 </figure>
 <h3 id="基础类型变量及其类型解析">基础类型变量及其类型解析</h3>
 <h4 id="内置数据类型">内置数据类型</h4>
@@ -733,11 +733,11 @@ D[面向对象高级语言]</pre>
 <p>虚基类用virtual声明，可把多个逻辑虚基类对象映射成同一个物理虚基类对象。映射成的这个物理虚基类对象<strong>尽可能早的构造、尽可能晚的析构</strong>，<strong>且构造和析构都只进行一次</strong>。</p>
 <p>假设两栖机车<code>AmphibiousVehicle</code>继承基类陆用机车<code>LandVehicle</code>和水上机车<code>WaterVehicle</code>，<code>LandVehicle</code>和<code>WaterVehicle</code>都继承自<code>Engine</code>，则在构造时可能会对<code>AmphibiousVehicle</code>的 <code>Engine</code>初始化两次</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201129103416061.png" alt="未引入虚基类" /><figcaption aria-hidden="true">未引入虚基类</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201129103416061.png" alt="未引入虚基类" /><figcaption aria-hidden="true">未引入虚基类</figcaption>
 </figure>
 <p>使用虚基类<code>Engine</code>,之后<code>LandVehicle</code>和<code>WaterVehicle</code>的<code>Engine</code>都指向同一块物理内存，且只会构造和析构一次，则不会出现上述情况。</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201129103924426.png" alt="使用虚基类" /><figcaption aria-hidden="true">使用虚基类</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201129103924426.png" alt="使用虚基类" /><figcaption aria-hidden="true">使用虚基类</figcaption>
 </figure>
 <p>代码如下:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接多继承</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Engine</span>&#123;</span> <span class="comment">/*...*/</span>&#125;; </span><br><span class="line"> 	<span class="class"><span class="keyword">class</span> <span class="title">LandVehicle</span>:</span> Engine&#123;<span class="comment">/*...*/</span>&#125;; </span><br><span class="line"> 	<span class="class"><span class="keyword">class</span> <span class="title">WaterVehicle</span>:</span> Engine&#123;<span class="comment">/*...*/</span>&#125;; </span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">AmphibiousVehicle</span>:</span><span class="keyword">public</span> LandVehicle,<span class="keyword">public</span> WaterVehicle&#123;<span class="comment">/*...*/</span>&#125; ;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用虚基类</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Engine</span>&#123;</span> <span class="comment">/*...*/</span> &#125;; </span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">LandVehicle</span>:</span> <span class="keyword">virtual</span> <span class="keyword">public</span> Engine&#123; <span class="comment">/*...*/</span> &#125;; </span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">WaterVehicle</span>:</span> <span class="keyword">public</span> <span class="keyword">virtual</span> Engine&#123; <span class="comment">/*...*/</span> &#125;; </span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">AmphibiousVehicle</span>:</span> <span class="keyword">public</span> LandVehicle, <span class="keyword">public</span> WaterVehicle&#123;  &#125;; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -780,7 +780,7 @@ D[面向对象高级语言]</pre>
 <p>不能重载的运算符有:<code>sizeof</code> <code>.</code> <code>.*</code> <code>::</code> <code>?:</code></p>
 <p>其他运算符能否重载的情况如下图所示</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20201129152651973.png" alt="运算符重载" /><figcaption aria-hidden="true">运算符重载</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20201129152651973.png" alt="运算符重载" /><figcaption aria-hidden="true">运算符重载</figcaption>
 </figure>
 <p>运算符重载基本和函数重载一样，但是由于运算符本身时有意义的，有以下几点要注意</p>
 <ul>

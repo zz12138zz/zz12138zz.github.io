@@ -32,18 +32,18 @@
 <meta property="og:site_name" content="某纯路人的博客">
 <meta property="og:description" content="华中科技大学计算机学院19级OS，内容大部分来自庞丽萍、阳富民的教材《计算机操作系统》第三版和PPT,教材质量属实不行，如有错误请多包含，可以联系954988021@qq.com勘误，感激不尽。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220104121157.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220104151532.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220104193114.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220105164824.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220106112625.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220104121157.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220104151532.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220104193114.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220105164824.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220106112625.png">
 <meta property="article:published_time" content="2022-01-12T15:12:56.000Z">
-<meta property="article:modified_time" content="2022-01-19T15:11:34.151Z">
+<meta property="article:modified_time" content="2022-04-10T02:56:31.510Z">
 <meta property="article:author" content="zz12138zz">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220104121157.png">
+<meta name="twitter:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220104121157.png">
 
 
 <link rel="canonical" href="http://example.com/2022/01/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/">
@@ -274,7 +274,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-01-19 23:11:34" itemprop="dateModified" datetime="2022-01-19T23:11:34+08:00">2022-01-19</time>
+        <time title="修改时间：2022-04-10 10:56:31" itemprop="dateModified" datetime="2022-04-10T10:56:31+08:00">2022-04-10</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -467,7 +467,7 @@
 </ol>
 <p>最后是操作系统对用户程序的处理，其步骤就是程序的编译运行过程，如下图</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220104121157.png" alt="处理应用程序的步骤" /><figcaption aria-hidden="true">处理应用程序的步骤</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220104121157.png" alt="处理应用程序的步骤" /><figcaption aria-hidden="true">处理应用程序的步骤</figcaption>
 </figure>
 <p>在连接这一步骤中，以前通常采用静态连接，将所有的外部调用函数都连接到目标文件中形成一个完整的主存映像文件。缺点是若多个应用程序都 调用了同一个库中的外部函数，则每个执行文件中都会包含这个外部函数对应的代码。</p>
 <p>现代常采用动态连接的方式，动态链接不需要将外部函数链接到目标文件中。而是在应用程序中需要调用 外部函数的地方作记录，并说明要使用的外部函数名和引用入口号，形成函 数调用链表。</p>
@@ -536,7 +536,7 @@
 </ul>
 <p>如果将进程的创建和销毁也视为一个状态，则进程的状态变迁图如下图：</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220104151532.png" alt="状态变迁图" /><figcaption aria-hidden="true">状态变迁图</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220104151532.png" alt="状态变迁图" /><figcaption aria-hidden="true">状态变迁图</figcaption>
 </figure>
 <p>由于进程具有动态的特征，因此除了基本的程序与数据外，操作系统使用进程控制块（PCB）描述进程与其他进程、系统资源的关系以及进程的状态。PCB一般包含以下内容：</p>
 <ul>
@@ -648,7 +648,7 @@
 <p>在两个或多个并发进程中，如果每个进程持有某种资源而又都等待着别的进程释放它或它们现在保持着的资源，否则就不能向前推进。此时，称这一组进程产生了死锁。</p>
 <p>死锁可以由系统资源分配图看出来。系统资源分配图的顶点由进程和资源表示，圆圈为进程，方框为资源，方框中的点为资源实例。圆圈指向方框表示进程请求资源，方框中的点指向圆圈表示资源实例已经分配给进程。当没有环路时不会发生死锁，当有环路，且环路上所有资源的实例都分配给了环路上的进程时会发生死锁。如下图中<code>P1-R1-P2-R3-P3-R2-P1</code>环路会发生死锁，但是环路<code>P2-R3-P3-R2</code>不会发生死锁，因为R2中还有一个实例不是分配给P2和P3的。（当然实际上会死锁，但是不是因为这个环路，而是因为前面那个个环路）</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220104193114.png" alt="资源分配图" /><figcaption aria-hidden="true">资源分配图</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220104193114.png" alt="资源分配图" /><figcaption aria-hidden="true">资源分配图</figcaption>
 </figure>
 <p>产生死锁的必要条件有：</p>
 <ul>
@@ -743,7 +743,7 @@ w=\frac{1}{n}\Sigma^{n}_{i=1}w_i \quad w_i=\frac{t_i}{t_{ri}}
 <p>动态分区存储管理在操作系统初启时低端留给操作系统，高地址端为空闲区。当有程序到来时根据程序需要为它在空闲区分配一块区域，程序运行完后释放资源。显然释放资源后可能会在占用区之间留下空闲区，即空闲区将不再是连续的区域，这些空闲区需要操作系统进行记录。</p>
 <p>为了完成动态分区管理，需要两个数据结构，一个是主存资源信息块（m_rib），其记录了当前整个系统中等待分配的队列、空闲区队列头指针和主存分配程序入口地址；第二个是分区描述器，其中描述了一个分区的状态（即是否分配）、起始地址、大小和next指针。一个主存分配情况以及m_rib情况如下图所示</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220105164824.png" alt="分区分配" /><figcaption aria-hidden="true">分区分配</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220105164824.png" alt="分区分配" /><figcaption aria-hidden="true">分区分配</figcaption>
 </figure>
 <p>在有新的进程需要分配内存时，显然应该在空闲区队列里找一块分配，然后更新空闲区队列，空闲区可以分配给进程的基本要求就是空闲区大小大于进程要求的大小。由于使用链表组织空闲区队列，放置策略基本上和链表的排序方式是绑定的，因为基本操作是从前往后遍历找到的第一个符合要求的空闲区。下面讨论三种放置策略以及他们对应的排序原则算法。</p>
 <ul>
@@ -900,7 +900,7 @@ w=\frac{1}{n}\Sigma^{n}_{i=1}w_i \quad w_i=\frac{t_i}{t_{ri}}
 <p>值得注意的是子进程共享父进程的系统打开文件表项，只是单纯把引用计数fcount加1，子进程直接可以使用该文件。但是父进程<code>close()</code>不影响子进程，反之亦然。</p>
 <p>Unix使用文件卷描述文件系统。文件卷指可以有组织地存放信息且通常可装卸的存储介质。一个文件卷的结构如下图所示</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/20220106112625.png" alt="文件卷" /><figcaption aria-hidden="true">文件卷</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/20220106112625.png" alt="文件卷" /><figcaption aria-hidden="true">文件卷</figcaption>
 </figure>
 <p>系统使用管理块记录文件使用情况，管理块内容如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">filsys</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> s_isize； <span class="comment">/* i节点区总块数 */</span></span><br><span class="line">    <span class="keyword">int</span> s_fsize； <span class="comment">/* 文件卷总块数 */</span></span><br><span class="line">    <span class="keyword">int</span> s_nfree； <span class="comment">/* 直接管理的空闲块数 */</span></span><br><span class="line">    <span class="keyword">int</span> s_free［<span class="number">100</span>］； <span class="comment">/* 空闲块号栈 */</span></span><br><span class="line">    <span class="keyword">int</span> s_ninode； <span class="comment">/* 直接管理的空闲i节点数 */</span></span><br><span class="line">    <span class="keyword">int</span> s_inode［<span class="number">100</span>］； <span class="comment">/* 空闲i节点号栈 */</span></span><br><span class="line">    <span class="keyword">char</span> s_flock； <span class="comment">/* 空闲块操作封锁标记 */</span></span><br><span class="line">    <span class="keyword">char</span> s_ilock； <span class="comment">/* 空闲i节点分配封锁标记 */</span></span><br><span class="line">    <span class="keyword">char</span> s_fmod； <span class="comment">/* 文件卷修改标记 */</span></span><br><span class="line">    <span class="keyword">char</span> s_ronly； <span class="comment">/* 文件卷只读标记 */</span></span><br><span class="line">    <span class="keyword">int</span> s_time； <span class="comment">/* 文件卷最近修改时间 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

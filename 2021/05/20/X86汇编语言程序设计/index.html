@@ -32,17 +32,17 @@
 <meta property="og:site_name" content="某纯路人的博客">
 <meta property="og:description" content="华中科技大学计算机学院19级汇编语言程序设计笔记，内容大部分来自教材，以32位段为主。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/x86.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/0102301239123.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210529232531098.png">
-<meta property="og:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210529233110028.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/x86.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/0102301239123.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20210529232531098.png">
+<meta property="og:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20210529233110028.png">
 <meta property="article:published_time" content="2021-05-20T14:20:56.000Z">
-<meta property="article:modified_time" content="2021-12-13T12:42:16.271Z">
+<meta property="article:modified_time" content="2022-04-10T02:57:01.147Z">
 <meta property="article:author" content="zz12138zz">
 <meta property="article:tag" content="课程笔记">
 <meta property="article:tag" content="X86汇编">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/x86.png">
+<meta name="twitter:image" content="https://zz12138img.oss-cn-beijing.aliyuncs.com/x86.png">
 
 
 <link rel="canonical" href="http://example.com/2021/05/20/X86%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
@@ -273,7 +273,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-13 20:42:16" itemprop="dateModified" datetime="2021-12-13T20:42:16+08:00">2021-12-13</time>
+        <time title="修改时间：2022-04-10 10:57:01" itemprop="dateModified" datetime="2022-04-10T10:57:01+08:00">2022-04-10</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -321,7 +321,7 @@
 <h3 id="intel-x86微处理器架构">Intel x86微处理器架构</h3>
 <p>32位CPU按其主要功能分为6大部件：总线接口部件、执行部件、指令预取部件</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/x86.png" alt="x86微处理器基本结构" /><figcaption aria-hidden="true">x86微处理器基本结构</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/x86.png" alt="x86微处理器基本结构" /><figcaption aria-hidden="true">x86微处理器基本结构</figcaption>
 </figure>
 <p>CPU对指令的处理分为四个阶段：提取、解码、执行、写回</p>
 <h3 id="位cpu中的通用寄存器">32位CPU中的通用寄存器</h3>
@@ -370,7 +370,7 @@
 <p>主存储器也称内存，是用来存储程序和数据的装置，由许多存储位(<code>bit</code>)组成，每8位组成一个字节(<code>byte</code>),相邻两个字节组成一个字(<code>word</code>)，相邻象个字组成一个双字(<code>double word</code>)。为让CPU能够访问到指定内存单元，需要给每个存储单元赋予一个唯一的无歧义的编号，x86的内存按字节编址，即以字节作为最小的寻址单位，也可以一次访问2、4、8个字节的数据。</p>
 <p>Intel x86系列采用小端存储的方式，低地址字节中存放数据的低字节，高地址字节中存放数据的最高字节。如双字数据<code>12345678H</code>在内存中<code>0040FF08H</code>单元的存放方式如下图</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/0102301239123.png" alt="小端存储" /><figcaption aria-hidden="true">小端存储</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/0102301239123.png" alt="小端存储" /><figcaption aria-hidden="true">小端存储</figcaption>
 </figure>
 <p>同时注意访问内存中的数据单元时要注意说明访问数据的类型。</p>
 <h3 id="数据在计算机内存中的表示形式">数据在计算机内存中的表示形式</h3>
@@ -537,11 +537,11 @@
 <p>使用寄存器传递数据时由于寄存器的个数有限，只适合于传递较少的参数，且注意小心使用寄存器以免丢失数据。使用约定单元传递参数需要用到全局变量，模块间的耦合性过高。堆栈法最为常用。</p>
 <p>堆栈法通过堆栈传递数据，在调用子程序时，首先将参数压栈，然后执行call指令调用子程序，此时堆栈中的内存分布如下图</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210529232531098.png" alt="堆栈内存分布" /><figcaption aria-hidden="true">堆栈内存分布</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20210529232531098.png" alt="堆栈内存分布" /><figcaption aria-hidden="true">堆栈内存分布</figcaption>
 </figure>
 <p>显然<code>esp+4</code>就是最后被压入的参数，可以通过esp来访问参数。当然这只是简单情况，事实上在子程序中esp依然会变化（比如申请局部变量），为方便访问堆栈内存单元，一般会压入ebp，然后令ebp=esp，此时堆栈内存分布如图。</p>
 <figure>
-<img src="https://gitee.com/zz12138zz/PicGoimg/raw/master/img/image-20210529233110028.png" alt="堆栈内存分布" /><figcaption aria-hidden="true">堆栈内存分布</figcaption>
+<img src="https://zz12138img.oss-cn-beijing.aliyuncs.com/image-20210529233110028.png" alt="堆栈内存分布" /><figcaption aria-hidden="true">堆栈内存分布</figcaption>
 </figure>
 <p>此后而ebp不在变化，可以通过<code>ebp+8</code>来访问最后压入的参数。</p>
 <p>堆栈除了用来传递参数外，还可以用来保护现场，对要用到但又不想让子程序改变其值的寄存器可以先将其值压栈，在子程序执行完毕后再按顺序出栈到对应寄存器。</p>
